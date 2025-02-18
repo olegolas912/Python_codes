@@ -6,9 +6,10 @@
 from os.path import dirname, abspath
 import sys
 sys.path.append(dirname(abspath(__file__)))
-from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit, execute
+from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit
+from qiskit_aer import Aer
+from qiskit import transpile
 from Python.helpFiles import get2DiffRandNum, get3DiffRandNum
-from qiskit import BasicAer
 from numpy import power, abs, where, array, zeros, empty, absolute, sort
 from numpy.random import randint, seed
 from scipy.constants import pi
@@ -215,8 +216,11 @@ class Board:
         Finds the wavevector of the system
         :return: The wavevector of the system
         """
-        return execute(self.qc, BasicAer.get_backend("statevector_simulator"), shots=1).result()\
-                          .get_statevector(self.qc)
+        simulator = Aer.get_backend("statevector_simulator")  # Используем симулятор
+        transpiled_circuit = transpile(self.qc, simulator)  # Транспиляция схемы
+        job = simulator.run(transpiled_circuit, shots=1)  # Запуск схемы
+        result = job.result()
+        return result.get_statevector()
 
     def findBellPairs(self):
         """

@@ -11,8 +11,10 @@ from Python.Board import Board
 from Python.Buttons import InteractiveButtons
 from Python.helpFiles import distributeGates
 from numpy import amax, array, sum, empty, append, argwhere, copy, any, in1d, argsort, zeros
-from qiskit import execute, Aer
 from time import time
+from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
+from qiskit import transpile
+from qiskit_aer import Aer
 
 
 class PokerGame:
@@ -225,7 +227,9 @@ class PokerGame:
 
             board = self.boards[i]
             board.qc.measure(board.q, board.c)
-            counts = execute(board.qc, simulator, shots=1).result().get_counts(board.qc)
+            transpiled_circuit = transpile(board.qc, simulator)
+            job = simulator.run(transpiled_circuit, shots=1)
+            counts = job.result().get_counts()
             for bitStr in list(counts.keys())[0]:
                 if bitStr == "1":
                     scores[i] += 1
