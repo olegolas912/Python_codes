@@ -3,12 +3,12 @@
 #          Christian Johnsen <christian.johnsen97@gmail.com>,
 #          Vemund Falch <vemfal@gmail.com>
 
-from os.path import dirname, abspath
 import sys
-sys.path.append(dirname(abspath(__file__)))
-from Python.PokerGame import PokerGame
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from PokerGame import PokerGame
 import matplotlib.pyplot as plt
-from Python.helpFiles import getIntInput
+from helpFiles import getIntInput
 from numpy import array, count_nonzero, nonzero, delete, flip
 
 

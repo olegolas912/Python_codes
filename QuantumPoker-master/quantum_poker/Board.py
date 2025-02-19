@@ -7,13 +7,12 @@ from os.path import dirname, abspath
 import sys
 sys.path.append(dirname(abspath(__file__)))
 from qiskit import ClassicalRegister, QuantumRegister, QuantumCircuit
-from qiskit_aer import Aer
-from qiskit import transpile
-from Python.helpFiles import get2DiffRandNum, get3DiffRandNum
+from helpFiles import get2DiffRandNum, get3DiffRandNum
 from numpy import power, abs, where, array, zeros, empty, absolute, sort
 from numpy.random import randint, seed
 from scipy.constants import pi
-
+from qiskit import transpile
+from qiskit_aer import Aer
 
 class Board:
     def __init__(self, boardSeed=43, enableEntanglement=False, nRandOneQGates=5, nRandTwoQGates=5):
@@ -128,14 +127,15 @@ class Board:
         Finds the probabilities that the qubits give - upon being measured in the +,- basis
         :return: the probabilities
         """
-        probs = zeros(self.size)
         psi = self.getPsi()
+        psi_data = psi.data
+        probs = zeros(self.size)
         for qbit in range(self.size):
             dist = 2**qbit
             gaps = 2**(qbit+1)
             for j in range(2**(self.size-qbit-1)):
                 for i in range(0, 2**qbit):  # i -> j*dist[1]+i
-                    probs[qbit] += power(absolute(psi[i + j * gaps] - psi[i + j * gaps + dist]), 2)
+                    probs[qbit] += power(absolute(psi_data[i + j * gaps] - psi_data[i + j * gaps + dist]), 2)
         return probs / 2
 
     def getProbs01(self):
@@ -156,9 +156,11 @@ class Board:
         # looking at list of basis vectors |0...00>, |0...01>, ...
         groupSize = 2 ** i
         # Takes out every other cluster of length groupSize
+        psi = self.getPsi()
+        psi_data = psi.data
         for startIndex in range(groupSize, 2 ** self.size, 2*groupSize):
             for index in range(startIndex, startIndex + groupSize):
-                probability += abs(psi[index]) ** 2
+                probability += abs(psi_data[index]) ** 2
         return probability
 
     def getBellStateProbs(self, coords, psi):
@@ -169,22 +171,35 @@ class Board:
         :param psi: The wavevector of the system.
         :return: The probabilities
         """
-        order = array([where(coords==i)[0][0] for i in sort(coords)])
+        # psi = self.getPsi()
+        psi_data = psi.data
+        i, j = coords
+        if j < i:
+            i, j = j, i
+        dist = array([0, 2**i, 2**j, 2**i + 2**j])
+        gaps = array([2**(i+1), 2**(j+1)])
         probs = zeros(4)
-        dist = array([0, 2**(coords[0]), 2**(coords[1]),  2**(coords[0])+2**(coords[1])])
-        gaps = array([2**(coords[order[0]]+1), 2**(coords[order[1]]+1)])
-        for k in range(2**(self.size-coords[order[1]]-1)):
-            for j in range(2**(coords[order[1]]-coords[order[0]]-1)):
-                for i in range(0, 2**coords[order[0]]): # i -> j*dist[1]+i
-                    probs[0] += power(absolute(psi[i + j*gaps[0]+k*gaps[1]] +
-                                               psi[i + j*gaps[0]+k*gaps[1] + dist[3]]), 2)
-                    probs[1] += power(absolute(psi[i + j*gaps[0]+k*gaps[1]] -
-                                               psi[i + j*gaps[0]+k*gaps[1] + dist[3]]), 2)
-                    probs[2] += power(absolute(psi[i + j*gaps[0]+k*gaps[1] + dist[1]] +
-                                               psi[i + j*gaps[0]+k*gaps[1] + dist[2]]), 2)
-                    probs[3] += power(absolute(psi[i + j*gaps[0]+k*gaps[1] + dist[1]] -
-                                               psi[i + j*gaps[0]+k*gaps[1] + dist[2]]), 2)
-        return probs/2
+        for k in range(2**(self.size - j - 1)):
+            for x in range(2**(j - i - 1)):
+                for y in range(2**i):
+                    probs[0] += power(abs(
+                        psi_data[y + x*gaps[0] + k*gaps[1]] +
+                        psi_data[y + x*gaps[0] + k*gaps[1] + dist[3]]
+                    ), 2)
+                    probs[1] += power(abs(
+                        psi_data[y + x*gaps[0] + k*gaps[1]] -
+                        psi_data[y + x*gaps[0] + k*gaps[1] + dist[3]]
+                    ), 2)
+                    probs[2] += power(abs(
+                        psi_data[y + x*gaps[0] + k*gaps[1] + dist[1]] +
+                        psi_data[y + x*gaps[0] + k*gaps[1] + dist[2]]
+                    ), 2)
+                    probs[3] += power(abs(
+                        psi_data[y + x*gaps[0] + k*gaps[1] + dist[1]] -
+                        psi_data[y + x*gaps[0] + k*gaps[1] + dist[2]]
+                    ), 2)
+
+        return probs / 2
 
     def getBellStateProbs3(self, coords, psi):
         """
@@ -194,6 +209,8 @@ class Board:
         :param psi: The wavevector of the system.
         :return: The probabilities
         """
+        psi = self.getPsi()
+        psi_data = psi.data
         order = array([where(coords==i)[0][0] for i in sort(coords)])
         probs = zeros(8)
         dist = array([0, 2**coords[2], 2**coords[1], 2**coords[0], 2**coords[1]+2**coords[2], 2**coords[0]+2**coords[2],
@@ -204,11 +221,11 @@ class Board:
                 for j in range(2**(coords[order[1]]-coords[order[0]]-1)):
                     for i in range(0, 2**coords[order[0]]):
                         for index in range(0, 4):
-                            probs[2*index]+= power(absolute(psi[i + j*gaps[0] + k*gaps[1] + l*gaps[2] + dist[index]] +
-                                                   psi[i + j*gaps[0] + k*gaps[1]  + l*gaps[2] + dist[7-index]]), 2)
+                            probs[2*index]+= power(absolute(psi_data[i + j*gaps[0] + k*gaps[1] + l*gaps[2] + dist[index]] +
+                                                   psi_data[i + j*gaps[0] + k*gaps[1]  + l*gaps[2] + dist[7-index]]), 2)
                             probs[2*index+1] += power(
-                                absolute(psi[i + j * gaps[0] + k * gaps[1] + l * gaps[2] + dist[index]] -
-                                         psi[i + j * gaps[0] + k * gaps[1] + l * gaps[2] + dist[7 - index]]), 2)
+                                absolute(psi_data[i + j * gaps[0] + k * gaps[1] + l * gaps[2] + dist[index]] -
+                                         psi_data[i + j * gaps[0] + k * gaps[1] + l * gaps[2] + dist[7 - index]]), 2)
         return probs/2
 
     def getPsi(self):
@@ -216,9 +233,9 @@ class Board:
         Finds the wavevector of the system
         :return: The wavevector of the system
         """
-        simulator = Aer.get_backend("statevector_simulator")  # Используем симулятор
-        transpiled_circuit = transpile(self.qc, simulator)  # Транспиляция схемы
-        job = simulator.run(transpiled_circuit, shots=1)  # Запуск схемы
+        simulator = Aer.get_backend("statevector_simulator")
+        transpiled_circuit = transpile(self.qc, simulator)
+        job = simulator.run(transpiled_circuit, shots=1)
         result = job.result()
         return result.get_statevector()
 
