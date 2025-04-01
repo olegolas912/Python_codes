@@ -1,0 +1,2548 @@
+
+<!-- saved from url=(0037)https://elibrary.ru/query_results.asp -->
+<html class=" yhffvb idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+BODY, P, TR, TD, INPUT, SELECT, OPTION, TEXTAREA, UL {font-family: Tahoma, Verdana, Arial Cyr, Arial, Helvetica, sans-serif; font-size: 8pt;}
+A {text-decoration: none; color: #00008f}
+H1 {font-family: Tahoma, Verdana, Arial Cyr, Arial, Helvetica, sans-serif; font-size: 9pt;}
+H2 {font-family: Tahoma, Verdana, Arial Cyr, Arial, Helvetica, sans-serif; font-size: 9pt;}
+FORM, H1, H2 {margin: 0}
+A:hover {color: #ff0000; text-decoration: underline}
+.menus A {color: #ffffff}
+.menus A:hover {color: #ffffff; text-decoration: underline}
+.menub A {color: #000000}
+.expandable {cursor:pointer;}
+img.expandable {filter:alpha(opacity=70); opacity: 0.7;}
+.win_expandable {cursor:pointer}
+.expanded {display:}
+.collapsed {display:none}
+.menug A {color: #555555}
+.redref A {color: #ED1C24}
+P.break {page-break-before: always}
+.input {border: #7f9db9 1px solid; background: #f5f5f5; height: 20px}
+.inputw {border: #7f9db9 1px solid; background: #ffffff; height: 20px}
+.inputr {border: #7f9db9 1px solid; background: #f5f5f5}
+.inputrw {border: #7f9db9 1px solid; background: #ffffff}
+.ast A:hover {text-decoration: none; color: #F26C4F}
+.ast A {font-family: Times New Roman, Garamond, Times, Georgia, serif; font-size: 30pt; color: #F26C4F}
+.astb A:hover {text-decoration: none; color: #00008f}
+.astb A {font-family: Times New Roman, Times, serif; font-size: 30pt; color: #00008f}
+.aster {color: #F26C4F; font-family: Times New Roman, Times, serif; font-size: 16pt; cursor:pointer;}
+.tooltip {
+	background-color:#000;
+	border:1px solid #fff;
+	padding:10px 15px;
+	width:250px;
+	display:none;
+	color:#fff;
+	text-align:left;
+	font-size:8pt;
+	/* outline radius for mozilla/firefox only */
+	-moz-box-shadow:0 0 10px #000;
+	-webkit-box-shadow:0 0 10px #000;
+}
+.tooltip A:hover {color: #ffffff; text-decoration: underline}
+.tooltip A {color: #ffffff; text-decoration: underline}
+.redtext {color: #F26C4F;}
+.bluetext {color: #00008f;}
+</style>
+<meta property="og:image" content="https://elibrary.ru/images/elibrary_fb.png">
+
+<title>Результаты поискового запроса</title>
+
+<script type="text/javascript" async="" src="./elibrary_files/ga.js.download"></script><script type="text/javascript" src="./elibrary_files/jquery.min.js.download"></script>
+<script type="text/javascript" src="./elibrary_files/MathJax.js.download"></script>
+<script language="JavaScript">
+//window.onerror=null;
+w_down=new Image();
+w_down.src="/pic/w_show.gif";
+w_up=new Image();
+w_up.src="/pic/w_hide.gif";
+
+function hideShow(elem,parent) {
+  var child =  document.getElementById(elem);
+  child.className = child.className == "collapsed" ? "expanded" : "collapsed";
+  if (parent.className == "win_expandable") parent.src = child.className == "collapsed" ? w_down.src : w_up.src;
+}
+function RowSelect(row,sel){
+  row.bgColor = sel==1 ? "#dddddd" : "#f5f5f5";
+}
+function show_help(topic){
+  var frm = document.forms["results"];
+  anewwin=window.open("", "addwin", "resizable=yes,scrollbars=yes,height=300,width=500,top=0,left=0");
+  frm.action=topic;
+  frm.target="addwin";
+  frm.submit()
+}
+function select_all(){
+  var frm = document.forms["results"];
+  for (var i = 0; i < frm.elements.length; i++) {
+    if (frm.elements[i].name.substring(0,3)=="tid"){
+       frm.elements[i].checked=1;
+       document.all.restab.rows["a" + frm.elements[i].name.substring(3, frm.elements[i].name.length)].bgColor = "#dddddd";}
+  }
+}
+function deselect_all(){
+  var frm = document.forms["results"];
+  for (var i = 0; i < frm.elements.length; i++) {
+    if (frm.elements[i].name.substring(0,3)=="tid"){
+       frm.elements[i].checked=0;
+       document.all.restab.rows["a" + frm.elements[i].name.substring(3, frm.elements[i].name.length)].bgColor = "#f5f5f5";}
+  }
+}
+function itembox_add(){
+  var frm = document.forms["results"];
+  var issel=0;
+  for (var i = 0; i < frm.elements.length; i++) {
+    if (frm.elements[i].name.substring(0,3)=="tid"){
+       if (frm.elements[i].checked) {issel=1; break}
+    }
+  }
+  if (issel==0) {
+    alert ("Не выделено ни одной статьи")}
+  else {
+    anewwin=window.open("", "dialog", "resizable=no,scrollbars=no,height=200,width=400,top=200,left=200");
+    anewwin.resizeTo(400,200);
+    frm.add_all.value=0;
+    frm.action="itembox_item_add.asp";
+    frm.target="dialog";
+    frm.submit()
+  }
+}
+function itembox_add_all(){
+  var frm = document.forms["results"];
+  anewwin=window.open("", "dialog", "resizable=no,scrollbars=no,height=200,width=400,top=200,left=200");
+  anewwin.resizeTo(400,200);
+  frm.add_all.value=1;
+  frm.action="itembox_item_add.asp";
+  frm.target="dialog";
+  frm.submit()
+}
+function itembox_new(aid,anam){
+  var frm = document.forms["results"];
+  var el = document.createElement("OPTION");
+  el.text=anam;
+  el.value=aid;
+  frm.itemboxid.options[frm.itemboxid.options.length]=el;
+  frm.itemboxid[frm.itemboxid.length-1].selected=true;
+}
+function load_article(id){
+
+	document.forms["results"].action="full_text.asp?id="+id;
+	document.forms["results"].target="_blank";
+	document.forms["results"].submit()
+
+}
+function url_article(idid, urlnum){
+
+	document.forms["results"].action="url_article.asp";
+	document.forms["results"].did.value=idid;
+	document.forms["results"].urlnum.value=urlnum;
+	document.forms["results"].target="_blank";
+	document.forms["results"].submit()
+
+}
+function order_item(id, pr){
+
+  if (0-pr>=0){
+    if (confirm("На Вашем счету сейчас 0 руб. \nПри открытии доступа к полному тексту данной публикации с Вашего счета будет списано " + eval(pr) + " руб.\nПодтверждаете приобретение публикации?")) {
+    anewwin=window.open("", "fulltext", "resizable=yes,scrollbars=yes,top=0,left=0");
+    document.forms["results"].action="buy_item.asp";
+    document.forms["results"].payitemid.value=id;
+    document.forms["results"].target="fulltext";
+    document.forms["results"].submit()}}
+
+}
+
+var didScroll = false;
+var didScroll2 = false;
+
+function isVisible(tag) {
+    var t = $(tag);
+    var w = $(window);
+    var wt = w.scrollTop();
+    var tt = t.offset().top;
+    var tb = tt + t.height();
+    return ((tb <= wt + w.height()) && (tt >= wt));
+}
+function pdf_icon(b) {
+  if (!b.prop("shown") && isVisible(b)) {
+    b.prop("shown", true);
+    b.load("ispdf.asp?itemid=" + b.attr('name').substring(4) + "&rand=" + Math.random());
+  }
+}
+function get_pdfs(){
+  $('div[id^="pdf_"]:not(prop("shown"))').each(function(){
+    pdf_icon($(this))
+  });
+}
+setInterval(function() {
+  if ( didScroll2 ) {
+	didScroll2=false;
+	get_pdfs();
+    }
+ }, 200);
+
+$(document).ready(function() { 
+
+$(window).scroll(function() {
+     didScroll = true;
+ });
+
+setInterval(function() {
+  if ( didScroll ) {
+	didScroll=false;
+	didScroll2=true;
+    }
+ }, 500);
+
+	didScroll=true;
+})
+	
+</script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuTitle {background-color: #CCCCCC; margin: -1px -1px 1px -1px; text-align: center; font-style: italic; font-size: 80%; color: #444444; padding: 2px 0; overflow: hidden}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style></head>
+
+<body bgcolor="#f5f5f5" onload="document.all.loading.style.display=&quot;none&quot;; document.all.thepage.style.display=&quot;&quot;"><div id="MathJax_Message" style="display: none;"></div>
+
+<div id="loading" style="position: absolute; width: 100%; text-align: center; top: 300px; display: none;">
+Пожалуйста, подождите, <br>пока Ваш запрос будет обработан
+<br><img src="./elibrary_files/query_wait.gif" border="0" width="31" height="31" vspace="5"></div>
+
+<div id="thepage" style="">
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tbody><tr><td width="100%" align="center" valign="top">
+
+<table width="970" cellpadding="0" cellspacing="0" border="0" background="./elibrary_files/bg5.gif">
+<tbody><tr><td width="165" align="left" valign="top">
+
+<table border="0" cellspacing="0" cellpadding="0" width="150">
+
+<tbody><tr><td><img src="./elibrary_files/1pix.gif" vspace="14"></td></tr>
+
+<tr><td><a href="https://elibrary.ru/defaultx.asp"><img src="./elibrary_files/elibrary_logo.gif" width="150" height="33" border="0" title="eLIBRARY.RU - НАУЧНАЯ ЭЛЕКТРОННАЯ БИБЛИОТЕКА"></a></td></tr>
+<tr><td><img src="./elibrary_files/1pix.gif" vspace="9"></td></tr>
+<script language="JavaScript">
+function check_search(){
+if (document.forms["search"].ftext.value.length > 1) {
+  var frm = document.forms["search"];
+  frm.action="/query_results.asp";
+  frm.target="";
+  frm.submit();
+  return false}
+else {
+   alert("Введите не менее двух символов");
+   return false}
+}
+</script>
+<form name="search" action="https://elibrary.ru/query_results.asp" method="POST" onsubmit="return check_search()"></form>
+<input type="hidden" name="where_fulltext" value="on">
+<input type="hidden" name="where_name" value="on">
+<input type="hidden" name="where_abstract" value="on">
+<input type="hidden" name="where_keywords" value="on">
+<input type="hidden" name="where_affiliation" value="">
+<input type="hidden" name="where_references" value="">
+<input type="hidden" name="type_article" value="on">
+<input type="hidden" name="type_disser" value="on">
+<input type="hidden" name="type_book" value="on">
+<input type="hidden" name="type_report" value="on">
+<input type="hidden" name="type_conf" value="on">
+<input type="hidden" name="type_patent" value="on">
+<input type="hidden" name="type_preprint" value="on">
+<input type="hidden" name="type_grant" value="on">
+<input type="hidden" name="type_dataset" value="on">
+<input type="hidden" name="search_freetext" value="">
+<input type="hidden" name="search_morph" value="on">
+<input type="hidden" name="search_fulltext" value="">
+<input type="hidden" name="search_open" value="">
+<input type="hidden" name="search_results" value="">
+<input type="hidden" name="titles_all" value="">
+<input type="hidden" name="authors_all" value="">
+<input type="hidden" name="rubrics_all" value="">
+<input type="hidden" name="queryboxid" value="">
+<input type="hidden" name="itemboxid" value="">
+<input type="hidden" name="begin_year" value="">
+<input type="hidden" name="end_year" value="">
+<input type="hidden" name="issues" value="all">
+<input type="hidden" name="orderby" value="rank">
+<input type="hidden" name="order" value="rev">
+<input type="hidden" name="changed" value="1">
+
+<tr><td width="100%" align="center" valign="top">
+<table border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#555555">
+<tbody><tr><td width="100%" bgcolor="#555555">
+<table border="0" cellspacing="0" cellpadding="3" bgcolor="#555555" width="100%">
+<tbody><tr valign="middle" align="center"><td width="135"><font color="#ffffff">Поиск в библиотеке</font></td><td width="15"><img src="./elibrary_files/w_show.gif" width="12" height="12" class="win_expandable" onclick="hideShow(&#39;win_search&#39;,this)"></td>
+</tr></tbody></table></td></tr></tbody></table>
+<div id="win_search" class="collapsed">
+
+<table border="0" cellspacing="0" cellpadding="3" bgcolor="#eeeeee" width="100%">
+<tbody><tr><td><img src="./elibrary_files/1pix.gif"></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<input type="text" name="ftext" value="" size="10" maxlength="255" style="width:120px; border-left: #5c6aa6 1px solid; border-right: #5c6aa6 1px solid; border-top: #5c6aa6 1px solid; border-bottom: #5c6aa6 1px solid"><br>
+<img src="./elibrary_files/1pix.gif" vspace="4"><br>
+<input type="submit" value="Поиск" style="color:#ffffff; width:50px; background:#F26C4F; border-left: #F26C4F 0px solid; border-right: #F26C4F 0px solid; border-top: #F26C4F 0px solid; border-bottom: #F26C4F 0px solid">
+</td></tr>
+<tr><td><img src="./elibrary_files/1pix.gif"></td></tr>
+</tbody></table>
+
+<table border="0" cellspacing="0" cellpadding="3" bgcolor="#dddddd" class="menub" width="100%">
+<tbody><tr valign="middle" align="center"><td><a href="https://elibrary.ru/querybox.asp?scope=newquery">Расширенный поиск</a></td></tr></tbody></table>
+
+<table border="0" cellspacing="0" cellpadding="3" bgcolor="#dddddd" class="menub" width="100%">
+<tbody><tr valign="middle" align="center"><td><a href="https://elibrary.ru/neural_search.asp">Нейропоиск</a></td></tr></tbody></table>
+
+</div>
+
+
+
+</td></tr>
+
+<tr><td><img src="./elibrary_files/1pix.gif" vspace="9"></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<table border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#5c6aa6">
+<tbody><tr><td width="100%" bgcolor="#5c6aa6">
+<table border="0" cellspacing="0" cellpadding="3" bgcolor="#5c6aa6" width="100%">
+<tbody><tr valign="middle" align="center"><td width="135"><font color="#ffffff">Навигатор</font>
+</td><td width="15"><img src="./elibrary_files/w_hide.gif" width="12" height="12" class="win_expandable" onclick="hideShow(&#39;win_goto&#39;,this)"></td></tr></tbody></table></td></tr></tbody></table>
+<div id="win_goto" class="expanded">
+<table border="0" cellspacing="0" cellpadding="0" bgcolor="#5c6aa6" width="100%">
+<tbody><tr valign="top"><td width="100%" bgcolor="#5c6aa6">
+<table border="0" cellspacing="0" cellpadding="2" bgcolor="#eeeeee" width="100%">
+
+<tbody><tr><td align="right" valign="middle" bgcolor="#eeeeee"><a href="https://elibrary.ru/titles.asp">ЖУРНАЛЫ</a></td><td width="14" align="right" valign="middle"><img src="./elibrary_files/tr_gray.gif" border="0" width="5" height="9" hspace="2"></td></tr>
+<tr><td align="right" valign="middle" bgcolor="#eeeeee"><a href="https://elibrary.ru/books.asp">КНИГИ</a></td><td width="14" align="right" valign="middle"><img src="./elibrary_files/tr_gray.gif" border="0" width="5" height="9" hspace="2"></td></tr>
+<tr><td align="right" valign="middle" bgcolor="#eeeeee"><a href="https://elibrary.ru/patents.asp">ПАТЕНТЫ</a></td><td width="14" align="right" valign="middle"><img src="./elibrary_files/tr_gray.gif" border="0" width="5" height="9" hspace="2"></td></tr>
+<tr><td align="right" valign="middle" bgcolor="#eeeeee"><a href="https://elibrary.ru/querybox.asp">ПОИСК</a></td><td width="14" align="right" valign="middle"><img src="./elibrary_files/tr_gray.gif" border="0" width="5" height="9" hspace="2"></td></tr>
+<tr><td align="right" valign="middle" bgcolor="#eeeeee"><a href="https://elibrary.ru/authors.asp">АВТОРЫ</a></td><td width="14" align="right" valign="middle"><img src="./elibrary_files/tr_gray.gif" border="0" width="5" height="9" hspace="2"></td></tr>
+<tr><td align="right" valign="middle" bgcolor="#eeeeee"><a href="https://elibrary.ru/orgs.asp">ОРГАНИЗАЦИИ</a></td><td width="14" align="right" valign="middle"><img src="./elibrary_files/tr_gray.gif" border="0" width="5" height="9" hspace="2"></td></tr>
+<tr><td align="right" valign="middle" bgcolor="#eeeeee"><a href="https://elibrary.ru/keywords.asp">КЛЮЧЕВЫЕ СЛОВА</a></td><td width="14" align="right" valign="middle"><img src="./elibrary_files/tr_gray.gif" border="0" width="5" height="9" hspace="2"></td></tr>
+<tr><td align="right" valign="middle" bgcolor="#eeeeee"><a href="https://elibrary.ru/rubrics.asp">РУБРИКАТОР</a></td><td width="14" align="right" valign="middle"><img src="./elibrary_files/tr_gray.gif" border="0" width="5" height="9" hspace="2"></td></tr>
+
+<tr><td align="right" valign="middle" bgcolor="#eeeeee"><a href="https://elibrary.ru/itembox.asp">ПОДБОРКИ</a></td><td width="14" align="right" valign="middle"><img src="./elibrary_files/tr_gray.gif" border="0" width="5" height="9" hspace="2"></td></tr>
+
+
+<tr><td colspan="2"><img src="./elibrary_files/1pix.gif"></td></tr>
+<tr bgcolor="#dddddd" align="center" valign="middle"><td colspan="2" class="menub"><a href="https://elibrary.ru/defaultx.asp">Начальная страница</a></td></tr>
+</tbody></table>
+</td></tr></tbody></table>
+</div>
+</td></tr>
+
+<tr><td><img src="./elibrary_files/1pix.gif" vspace="9"></td></tr>
+<script language="JavaScript">
+function end_session(){
+
+  document.forms["session"].saveuser.value="0";
+
+  document.forms["session"].action="/end_session.asp";
+  document.forms["session"].target="";
+  document.forms["session"].submit()
+}
+</script>
+<form action="https://elibrary.ru/end_session.asp" method="POST" name="session"></form>
+<input type="hidden" name="saveuser" value="1">
+
+
+
+<tr><td width="100%" align="center" valign="top">
+<table border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#5c6aa6">
+<tbody><tr><td width="100%" bgcolor="#5c6aa6">
+<table border="0" cellspacing="0" cellpadding="3" bgcolor="#5c6aa6" width="100%">
+<tbody><tr valign="middle" align="center"><td width="135"><font color="#ffffff">Текущая сессия</font>
+</td><td width="15"><img src="./elibrary_files/w_show.gif" width="12" height="12" class="win_expandable" onclick="hideShow(&#39;win_session&#39;,this)"></td></tr></tbody></table></td></tr></tbody></table>
+<div id="win_session" class="collapsed">
+<table border="0" cellspacing="0" cellpadding="0" bgcolor="#5c6aa6" width="100%">
+<tbody><tr valign="top"><td width="100%" bgcolor="#5c6aa6" align="center">
+<table border="0" cellspacing="0" cellpadding="1" bgcolor="#eeeeee" width="100%">
+<tbody><tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+&nbsp;<font color="#000000">Имя пользователя:</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f"><a href="https://elibrary.ru/author_info.asp?isold=1" title="Персональная карточка пользователя">crifft12&nbsp;</a></font></td></tr>
+
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+&nbsp;<font color="#000000">IP-адрес компьютера:</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f">31.40.212.136</font></td></tr>
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+&nbsp;<font color="#000000">Название организации:</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+
+<font color="#00008f">не определена</font></td></tr>
+
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+&nbsp;<font color="#000000">Начало работы:</font></td></tr>
+
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f">14.03.2025 23:25</font></td></tr>
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+&nbsp;<font color="#000000">Время работы:</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f">00:01</font></td></tr>
+
+<tr><td align="center" width="100%" bgcolor="#dddddd" class="menub">
+<a href="https://elibrary.ru/project_user_office.asp">Личный кабинет</a></td></tr>
+
+<tr><td align="center" width="100%" bgcolor="#dddddd" class="menub">
+<a href="javascript:end_session()">Закрыть сессию</a></td></tr>
+</tbody></table>
+</td></tr></tbody></table>
+</div>
+</td></tr>
+
+<tr><td><img src="./elibrary_files/1pix.gif" vspace="9"></td></tr>
+
+<tr><td width="100%" align="center" valign="top">
+<table border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#5c6aa6">
+<tbody><tr><td width="100%" bgcolor="#5c6aa6">
+<table border="0" cellspacing="0" cellpadding="3" bgcolor="#5c6aa6" width="100%">
+<tbody><tr valign="middle" align="center"><td width="135"><font color="#ffffff">Легенда</font>
+</td><td width="15"><img src="./elibrary_files/w_hide.gif" width="12" height="12" class="win_expandable" onclick="hideShow(&#39;win_legend&#39;,this)"></td></tr></tbody></table></td></tr></tbody></table>
+<div id="win_legend" class="expanded">
+
+<table width="100%" cellspacing="0" cellpadding="3" border="0" bgcolor="#eeeeee">
+<tbody><tr><td colspan="2"><img src="./elibrary_files/1pix.gif" vspace="2"><br></td></tr>
+<tr><td width="15%" align="right" valign="top"><img src="./elibrary_files/download_green.png" width="16" hspace="3" border="0"></td>
+<td width="85%" align="left" valign="middle"><font color="#00008f">Доступ к полному тексту документа открыт</font></td></tr>
+<tr><td width="15%" align="right" valign="top"><img src="./elibrary_files/download_blue.png" width="16" hspace="3" border="0"></td>
+<td width="85%" align="left" valign="middle"><font color="#00008f">Полный текст доступен на сайте издателя</font></td></tr>
+<tr><td width="15%" align="right" valign="top"><img src="./elibrary_files/download_yellow.png" width="16" hspace="3" border="0"></td>
+<td width="85%" align="left" valign="middle"><font color="#00008f">Полный текст может быть получен через систему заказа</font></td></tr>
+<tr><td width="15%" align="right" valign="top"><img src="./elibrary_files/download_orange.png" width="16" hspace="3" border="0"></td>
+<td width="85%" align="left" valign="middle"><font color="#00008f">Доступ к полному тексту закрыт</font></td></tr>
+<tr><td valign="top" align="center"><font color="#00008f">-</font></td><td align="left"><font color="#00008f">Если иконки нет - полный текст документа отсутствует в НЭБ</font></td></tr>
+
+<tr><td colspan="2"><img src="./elibrary_files/1pix.gif" vspace="2"><br></td></tr>
+</tbody></table>
+
+</div>
+</td></tr>
+
+
+<tr><td><img src="./elibrary_files/1pix.gif" vspace="9"></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<table border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#5c6aa6">
+<tbody><tr><td width="100%" bgcolor="#5c6aa6">
+<table border="0" cellspacing="0" cellpadding="3" bgcolor="#5c6aa6" width="100%">
+<tbody><tr valign="middle" align="center"><td width="135"><font color="#ffffff">Контакты</font>
+</td><td width="15"><img src="./elibrary_files/w_show.gif" width="12" height="12" class="win_expandable" onclick="hideShow(&#39;win_contact&#39;,this)"></td></tr></tbody></table></td></tr></tbody></table>
+<div id="win_contact" class="collapsed">
+<table border="0" cellspacing="0" cellpadding="0" bgcolor="#eeeeee" width="100%">
+<tbody><tr><td colspan="2"><img src="./elibrary_files/1pix.gif" vspace="2"><br></td></tr>
+<tr valign="top"><td width="100%" bgcolor="#5c6aa6" align="center">
+<table border="0" cellspacing="0" cellpadding="1" bgcolor="#eeeeee" width="100%">
+
+<tbody><tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+&nbsp;<font color="#000000">Служба поддержки:</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f">(7-495) 544-2494 доб. 1<br></font>
+<font color="#00008f"><a href="mailto:support@elibrary.ru">support@elibrary.ru</a></font></td></tr>
+
+
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+<font color="#000000">Издателям журналов:</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f">(7-495) 544-2494 доб. 2<br></font>
+<font color="#00008f"><a href="mailto:publish@elibrary.ru">publish@elibrary.ru</a></font></td></tr>
+
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+<font color="#000000">Издателям книг:</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f">(7-495) 544-2494 доб. 3<br></font>
+<font color="#00008f"><a href="mailto:book@elibrary.ru">book@elibrary.ru</a></font></td></tr>
+
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+<font color="#000000">Издателям (Science Space):</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f">+7(495) 544-2494 доб. 4<br></font>
+<font color="#00008f"><a href="mailto:info@sciencespace.ru">info@sciencespace.ru</a></font></td></tr>
+
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+<font color="#000000">Организациям (Science Index):</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f">+7(495) 544-2494 доб. 4<br></font>
+<font color="#00008f"><a href="mailto:org@scienceindex.ru">org@scienceindex.ru</a></font></td></tr>
+
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+&nbsp;<font color="#000000">Доступ к API:</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f">+7(495) 544-2494 доб. 4<br></font>
+<font color="#00008f"><a href="mailto:api@elibrary.ru">api@elibrary.ru</a></font></td></tr>
+
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+&nbsp;<font color="#000000">Подписчикам:</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f">+7(495) 544-2494 доб. 6<br></font>
+<font color="#00008f"><a href="mailto:sales.team@elibrary.ru">sales.team@elibrary.ru</a></font></td></tr>
+
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+<font color="#000000">Конференции и семинары:</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f">+7(495) 544-2494 доб. 7<br></font>
+<font color="#00008f"><a href="mailto:conf@elibrary.ru">conf@elibrary.ru</a></font></td></tr>
+
+
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+&nbsp;<font color="#000000">Почтовый адрес:</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f">117246, г. Москва, Научный проезд, д. 14А, стр. 3, таунхаус 1</font><br><a href="https://elibrary.ru/contact_new.asp"><b>схема проезда</b></a></td></tr>
+
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+&nbsp;<font color="#000000">Веб-сайт:</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f"><a href="https://elibrary.ru/">https://elibrary.ru</a></font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+</td></tr>
+
+
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+&nbsp;<font color="#000000">Размещение рекламы:</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f"><a href="mailto:reklama@elibrary.ru">reklama@elibrary.ru</a></font></td></tr>
+
+<tr><td><img src="./elibrary_files/1pix.gif" vspace="1"></td></tr>
+
+<tr><td width="100%" align="left" valign="top" bgcolor="#dddddd">
+&nbsp;<font color="#000000">Вакансии:</font></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<font color="#00008f"><a href="mailto:info@elibrary.ru">info@elibrary.ru</a></font></td></tr>
+
+<tr><td><img src="./elibrary_files/1pix.gif" vspace="1"></td></tr>
+
+</tbody></table>
+</td></tr>
+<tr><td colspan="2"><img src="./elibrary_files/1pix.gif" vspace="2"><br></td></tr>
+</tbody></table>
+</div>
+</td></tr>
+
+<tr><td><img src="./elibrary_files/1pix.gif" vspace="9"></td></tr>
+<tr><td width="100%" align="center" valign="top">
+<table border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#5c6aa6">
+<tbody><tr><td width="100%" bgcolor="#5c6aa6">
+<table border="0" cellspacing="0" cellpadding="3" bgcolor="#5c6aa6" width="100%">
+<tbody><tr valign="middle" align="center"><td width="135"><font color="#ffffff">Копирайт</font>
+</td><td width="15"><img src="./elibrary_files/w_show.gif" width="12" height="12" class="win_expandable" onclick="hideShow(&#39;win_copyright&#39;,this)"></td></tr></tbody></table></td></tr></tbody></table>
+<div id="win_copyright" class="collapsed">
+<table border="0" cellspacing="0" cellpadding="0" bgcolor="#5c6aa6" width="100%">
+<tbody><tr valign="top"><td width="100%" bgcolor="#5c6aa6" align="center">
+<table border="0" cellspacing="0" cellpadding="3" bgcolor="#eeeeee" width="100%">
+<tbody><tr><td width="100%" align="center" valign="top" bgcolor="#eeeeee">
+<img src="./elibrary_files/1pix.gif" vspace="2"><br><font color="#00008f"><a href="https://elibrary.ru/copyright.asp">© 2000-2015<br>ООО НАУЧНАЯ ЭЛЕКТРОННАЯ БИБЛИОТЕКА</a></font><br><img src="./elibrary_files/1pix.gif" vspace="2"></td></tr>
+<tr><td align="center" width="100%" bgcolor="#dddddd" class="menub"><a href="https://elibrary.ru/copyright.asp">
+Все права защищены.</a></td></tr>
+
+</tbody></table>
+</td></tr>
+</tbody></table>
+</div>
+</td></tr>
+
+<tr><td><img src="./elibrary_files/1pix.gif" vspace="9"></td></tr>
+<tr><td width="100%" align="center" valign="top">
+
+
+<!-- Yandex.Metrika -->
+<div style="display:none;"><script type="text/javascript">
+(function(w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter171463 = new Ya.Metrika(171463);
+        } catch(e) {}
+    });
+})(window, 'yandex_metrika_callbacks');
+</script></div>
+<script src="./elibrary_files/watch.js.download" type="text/javascript" defer="defer"></script>
+<noscript><div style="position:absolute"><img src="//mc.yandex.ru/watch/171463" alt="" /></div></noscript>
+<!-- /Yandex.Metrika -->
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-9339902-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();
+</script>
+
+
+</td></tr>
+<tr><td><img src="./elibrary_files/1pix.gif" vspace="9"></td></tr>
+
+
+
+</tbody></table>
+
+</td><td width="580" align="center" valign="top">
+
+
+
+<table width="580" border="0" cellspacing="0" cellpadding="0">
+
+<tbody><tr><td width="100%" align="center" valign="top">
+<img src="./elibrary_files/1pix.gif" vspace="6"><br>
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="580">
+<form method="post" name="results" action="https://elibrary.ru/query_results.asp"></form>
+<input type="hidden" name="add_all" value="">
+<input type="hidden" name="paysum" value="">
+<input type="hidden" name="payitemid" value="">
+<input type="hidden" name="id" value="">
+<input type="hidden" name="authorid" value="">
+<input type="hidden" name="did" value="1">
+<input type="hidden" name="urlnum" value="1">
+
+<tbody><tr><td width="10" height="14"></td>
+<td width="75" height="65" rowspan="5" align="center" valign="middle">
+<table width="100%" height="100%" border="0" cellspacing="1" cellpadding="0" bgcolor="#ffffff">
+<tbody><tr><td width="100%" height="100%" bgcolor="#eeeeee" align="center" valign="middle"><img src="./elibrary_files/menu_journ.jpg" width="73" height="63" border="0" style="filter:alpha(opacity=70)" onmouseover="this.filters.alpha.opacity=90" onmouseout="this.filters.alpha.opacity=70"></td></tr></tbody></table></td>
+<td width="495"></td></tr>
+<tr><td bgcolor="#555555"><img src="./elibrary_files/1pix.gif"></td>
+<td height="19" align="right" valign="middle" bgcolor="#555555"><font color="#ffffff"><b>РЕЗУЛЬТАТЫ ПОИСКОВОГО ЗАПРОСА</b><img src="./elibrary_files/1pix.gif" hspace="10"></font></td></tr>
+<tr><td height="1" bgcolor="#ffffff"></td><td bgcolor="#ffffff"></td></tr>
+<tr><td height="14" bgcolor="#dddddd"></td><td bgcolor="#f5f5f5" background="./elibrary_files/line1_gr.gif"></td></tr>
+<tr><td height="9"></td><td></td></tr>
+</tbody></table>
+</td></tr>
+
+<tr><td width="100%" align="center" valign="top">
+
+<img src="./elibrary_files/1pix.gif" vspace="3"><br>
+<b><font color="#00008f">&nbsp;&nbsp;&nbsp;ВСЕГО НАЙДЕНО ПУБЛИКАЦИЙ: </font><font color="#ff0000">228973</font><font color="#00008f"> из </font><font color="#ff0000">70662452</font></b><br>
+
+<img src="./elibrary_files/1pix.gif" vspace="3"><br>
+
+
+
+
+
+<table width="580" cellspacing="1" cellpadding="3" bgcolor="#ffffff" id="restab">
+<tbody><tr align="center" valign="middle">
+<td width="30" bgcolor="#555555"><font color="#ffffff">№</font></td>
+<td width="520" bgcolor="#555555"><font color="#ffffff">Публикация</font></td>
+<td width="30" bgcolor="#555555"><font color="#ffffff">Цит.</font></td></tr>
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391090">
+<td align="center" valign="top"><font color="#00008f"><b>1</b></font><br><input type="checkbox" name="tid17391090" id="tid17391090" onclick="if (this.checked) {RowSelect(a17391090,1)} else {RowSelect(a17391090,0)}"><div id="pdf_17391090" name="pdf_17391090" style=""><a href="javascript:load_article(17391090)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391090"><b><span style="line-height:1.0;">СТАТИСТИКА</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730111">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730111&amp;selid=17391090">№&nbsp;10</a>.  С. 51-56.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391091">
+<td align="center" valign="top"><font color="#00008f"><b>2</b></font><br><input type="checkbox" name="tid17391091" id="tid17391091" onclick="if (this.checked) {RowSelect(a17391091,1)} else {RowSelect(a17391091,0)}"><div id="pdf_17391091" name="pdf_17391091" style=""><a href="javascript:load_article(17391091)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391091"><b><span style="line-height:1.0;">ДИФФЕРЕНЦИАЦИЯ НДПИ: ГРУППЫ ФАКТОРОВ</span></b></a><br><font color="#00008f"><i>Григорьев Е.М.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391091">№&nbsp;11</a>.  С. 2-5.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391091" title="Список публикаций, цитирующих данную">5</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391092">
+<td align="center" valign="top"><font color="#00008f"><b>3</b></font><br><input type="checkbox" name="tid17391092" id="tid17391092" onclick="if (this.checked) {RowSelect(a17391092,1)} else {RowSelect(a17391092,0)}"><div id="pdf_17391092" name="pdf_17391092" style=""><a href="javascript:load_article(17391092)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391092"><b><span style="line-height:1.0;">СОВЕРШЕНСТВОВАНИЕ ОРГАНИЗАЦИИ ТЕКУЩЕГО И КАПИТАЛЬНОГО РЕМОНТА СКВАЖИН В НГДУ "ЯМАШНЕФТЬ"</span></b></a><br><font color="#00008f"><i>Курамшин Ю., Гордиенко Е.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391092">№&nbsp;11</a>.  С. 6-7.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391094">
+<td align="center" valign="top"><font color="#00008f"><b>4</b></font><br><input type="checkbox" name="tid17391094" id="tid17391094" onclick="if (this.checked) {RowSelect(a17391094,1)} else {RowSelect(a17391094,0)}"><div id="pdf_17391094" name="pdf_17391094" style=""><a href="javascript:load_article(17391094)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391094"><b><span style="line-height:1.0;">ТЕХНОЛОГИЯ ОТКЛЮЧЕНИЯ ВЕРХНИХ ОБЪЕКТОВ РАЗРАБОТКИ ИСПОЛЬЗОВАНИЕМ МЕТАЛЛИЧЕСКОГО ПЛАСТЫРЯ В КАЧЕСТВЕ ЗАКОЛОННОГО ПАКЕРНОГО УСТРОЙСТВА</span></b></a><br><font color="#00008f"><i>Шайхутдинов Р., Табашников Р., Тухватуллин Р.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391094">№&nbsp;11</a>.  С. 10.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391094" title="Список публикаций, цитирующих данную">2</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391095">
+<td align="center" valign="top"><font color="#00008f"><b>5</b></font><br><input type="checkbox" name="tid17391095" id="tid17391095" onclick="if (this.checked) {RowSelect(a17391095,1)} else {RowSelect(a17391095,0)}"><div id="pdf_17391095" name="pdf_17391095" style=""><a href="javascript:load_article(17391095)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391095"><b><span style="line-height:1.0;">ОБ ЭФФЕКТИВНОЙ РАБОТЕ ШАРОШЕЧНОГО ДОЛОТА</span></b></a><br><font color="#00008f"><i>Соломенников С.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391095">№&nbsp;11</a>.  С. 11.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391096">
+<td align="center" valign="top"><font color="#00008f"><b>6</b></font><br><input type="checkbox" name="tid17391096" id="tid17391096" onclick="if (this.checked) {RowSelect(a17391096,1)} else {RowSelect(a17391096,0)}"><div id="pdf_17391096" name="pdf_17391096" style=""><a href="javascript:load_article(17391096)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391096"><b><span style="line-height:1.0;">ВОССТАНОВЛЕНИЕ СКВАЖИН МЕТОДОМ БУРЕНИЯ БОКОВОГО СТВОЛА</span></b></a><br><font color="#00008f"><i>Глухов С., Семенищев В., Могилев А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391096">№&nbsp;11</a>.  С. 12-13.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391097">
+<td align="center" valign="top"><font color="#00008f"><b>7</b></font><br><input type="checkbox" name="tid17391097" id="tid17391097" onclick="if (this.checked) {RowSelect(a17391097,1)} else {RowSelect(a17391097,0)}"><div id="pdf_17391097" name="pdf_17391097" style=""><a href="javascript:load_article(17391097)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391097"><b><span style="line-height:1.0;">ИЗВЛЕЧЕНИЕ ТРУДНОИЗВЛЕКАЕМЫХ ЗАПАСОВ НЕФТИ ПУТЕМ ОРГАНИЗАЦИИ ОДНОВРЕМЕННО РАЗДЕЛЬНОЙ ЗАКАЧКИ НА КОНИТЛОРСКОМ МЕСТОРОЖДЕНИИ</span></b></a><br><font color="#00008f"><i>Матвеев С., Федосеев С., Байрамов В.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391097">№&nbsp;11</a>.  С. 14-15.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391100">
+<td align="center" valign="top"><font color="#00008f"><b>8</b></font><br><input type="checkbox" name="tid17391100" id="tid17391100" onclick="if (this.checked) {RowSelect(a17391100,1)} else {RowSelect(a17391100,0)}"><div id="pdf_17391100" name="pdf_17391100" style=""><a href="javascript:load_article(17391100)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391100"><b><span style="line-height:1.0;">СПОСОБЫ ЛИКВИДАЦИИ КАТАСТРОФИЧЕСКИХ ПОГЛОЩЕНИЙ ПРИ СТРОИТЕЛЬСТВЕ СКВАЖИН ТИКСОТРОПНЫМИ СОСТАВАМИ ТАМПОНАЖНЫХ РАСТВОРОВ</span></b></a><br><font color="#00008f"><i>Темиров Э.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391100">№&nbsp;11</a>.  С. 21-22.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391102">
+<td align="center" valign="top"><font color="#00008f"><b>9</b></font><br><input type="checkbox" name="tid17391102" id="tid17391102" onclick="if (this.checked) {RowSelect(a17391102,1)} else {RowSelect(a17391102,0)}"><div id="pdf_17391102" name="pdf_17391102" style=""><a href="javascript:load_article(17391102)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391102"><b><span style="line-height:1.0;">РАЗВЕТВЛЕННЫЕ СКВАЖИНЫ - РАЗВИВАЮЩЕЕСЯ НАУЧНО-ТЕХНИЧЕСКОЕ НАПРАВЛЕНИЕ В ДОРАЗРАБОТКЕ МЕСТОРОЖДЕНИЙ НЕФТИ И ГАЗА</span></b></a><br><font color="#00008f"><i>Бронзов А., Гордиенко С.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391102">№&nbsp;11</a>.  С. 24-26.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391103">
+<td align="center" valign="top"><font color="#00008f"><b>10</b></font><br><input type="checkbox" name="tid17391103" id="tid17391103" onclick="if (this.checked) {RowSelect(a17391103,1)} else {RowSelect(a17391103,0)}"><div id="pdf_17391103" name="pdf_17391103" style=""><a href="javascript:load_article(17391103)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391103"><b><span style="line-height:1.0;">О ДОПУСТИМЫХ ОТКЛОНЕНИЯХ ФАКТИЧЕСКОЙ ДОБЫЧИ НЕФТИ ОТ ПРОЕКТНОЙ</span></b></a><br><font color="#00008f"><i>Янин А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391103">№&nbsp;11</a>.  С. 30-33.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391103" title="Список публикаций, цитирующих данную">4</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391105">
+<td align="center" valign="top"><font color="#00008f"><b>11</b></font><br><input type="checkbox" name="tid17391105" id="tid17391105" onclick="if (this.checked) {RowSelect(a17391105,1)} else {RowSelect(a17391105,0)}"><div id="pdf_17391105" name="pdf_17391105" style=""><a href="javascript:load_article(17391105)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391105"><b><span style="line-height:1.0;">СИЛОВЫЕ АГРЕГАТЫ ДЛЯ БУРОВЫХ РАБОТ</span></b></a><br><font color="#00008f"><i>Адреев Г.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391105">№&nbsp;11</a>.  С. 36-37.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391106">
+<td align="center" valign="top"><font color="#00008f"><b>12</b></font><br><input type="checkbox" name="tid17391106" id="tid17391106" onclick="if (this.checked) {RowSelect(a17391106,1)} else {RowSelect(a17391106,0)}"><div id="pdf_17391106" name="pdf_17391106" style=""><a href="javascript:load_article(17391106)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391106"><b><span style="line-height:1.0;">НЕФТЯНОЕ НАСОСНОЕ И БУРОВОЕ ОБОРУДОВАНИЕ В ПРОЕКТАХ РОССИЙСКОГО ОПК</span></b></a><br><font color="#00008f"><i>Раткин Л.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391106">№&nbsp;11</a>.  С. 38.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391107">
+<td align="center" valign="top"><font color="#00008f"><b>13</b></font><br><input type="checkbox" name="tid17391107" id="tid17391107" onclick="if (this.checked) {RowSelect(a17391107,1)} else {RowSelect(a17391107,0)}"><div id="pdf_17391107" name="pdf_17391107" style=""><a href="javascript:load_article(17391107)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391107"><b><span style="line-height:1.0;">МОДЕРНИЗАЦИЯ НАСОСОВ</span></b></a><br><font color="#00008f"><i>Курылев А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391107">№&nbsp;11</a>.  С. 40-41.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391108">
+<td align="center" valign="top"><font color="#00008f"><b>14</b></font><br><input type="checkbox" name="tid17391108" id="tid17391108" onclick="if (this.checked) {RowSelect(a17391108,1)} else {RowSelect(a17391108,0)}"><div id="pdf_17391108" name="pdf_17391108" style=""><a href="javascript:load_article(17391108)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391108"><b><span style="line-height:1.0;">ИСПОЛЬЗОВАНИЕ НОВЫХ ТЕХНОЛОГИЙ</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391108">№&nbsp;11</a>.  С. 42-43.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391110">
+<td align="center" valign="top"><font color="#00008f"><b>15</b></font><br><input type="checkbox" name="tid17391110" id="tid17391110" onclick="if (this.checked) {RowSelect(a17391110,1)} else {RowSelect(a17391110,0)}"><div id="pdf_17391110" name="pdf_17391110" style=""><a href="javascript:load_article(17391110)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391110"><b><span style="line-height:1.0;">ИНТЕРФАКС</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391110">№&nbsp;11</a>.  С. 46-48.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391111">
+<td align="center" valign="top"><font color="#00008f"><b>16</b></font><br><input type="checkbox" name="tid17391111" id="tid17391111" onclick="if (this.checked) {RowSelect(a17391111,1)} else {RowSelect(a17391111,0)}"><div id="pdf_17391111" name="pdf_17391111" style=""><a href="javascript:load_article(17391111)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391111"><b><span style="line-height:1.0;">СТАТИСТИКА</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730112">Бурение и нефть</a>. 
+2005. <a href="https://elibrary.ru/contents.asp?id=33730112&amp;selid=17391111">№&nbsp;11</a>.  С. 49-56.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391442">
+<td align="center" valign="top"><font color="#00008f"><b>17</b></font><br><input type="checkbox" name="tid17391442" id="tid17391442" onclick="if (this.checked) {RowSelect(a17391442,1)} else {RowSelect(a17391442,0)}"><div id="pdf_17391442" name="pdf_17391442" style=""><a href="javascript:load_article(17391442)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391442"><b><span style="line-height:1.0;">A NEW METHOD FOR SELECTIVE REGULATION OF PERMEABILITY AND ENHANCED RECOVERY OF DEPLETED RESERVOIRS. REPORT 1. INVESTIGATION OF THE SPONTANEOUS FORMATION OF EMULSIONS IN POROUS MEDIA</span></b></a><br><font color="#00008f"><i>Guschina Ju.F., Ippolitova L.A., Niskulov E.K., Khlebnikov V.N.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730126">Башкирский химический журнал</a>. 
+2011. Т. 18. <a href="https://elibrary.ru/contents.asp?id=33730126&amp;selid=17391442">№&nbsp;4</a>.  С. 46-51.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391442" title="Список публикаций, цитирующих данную">1</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391451">
+<td align="center" valign="top"><font color="#00008f"><b>18</b></font><br><input type="checkbox" name="tid17391451" id="tid17391451" onclick="if (this.checked) {RowSelect(a17391451,1)} else {RowSelect(a17391451,0)}"><div id="pdf_17391451" name="pdf_17391451" style=""><a href="javascript:load_article(17391451)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391451"><b><span style="line-height:1.0;">COMPARISON OF THE AUTO OXIDATION KINETICS OF BAZHENOV FORMATION OIL AND BAZHENOV FORMATION SOLID ORGANIC MATTER</span></b></a><br><font color="#00008f"><i>Zobov P.M., Antonov S.V., Bakulin D.A., Guschina Ju.F., Niskulov E.K., Khlebnikov V.N.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730126">Башкирский химический журнал</a>. 
+2011. Т. 18. <a href="https://elibrary.ru/contents.asp?id=33730126&amp;selid=17391451">№&nbsp;4</a>.  С. 87-92.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391451" title="Список публикаций, цитирующих данную">8</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391453">
+<td align="center" valign="top"><font color="#00008f"><b>19</b></font><br><input type="checkbox" name="tid17391453" id="tid17391453" onclick="if (this.checked) {RowSelect(a17391453,1)} else {RowSelect(a17391453,0)}"><div id="pdf_17391453" name="pdf_17391453" style=""><a href="javascript:load_article(17391453)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391453"><b><span style="line-height:1.0;">UNDERGROUND CONGESTIONS OF PETROLEUM HYDROCARBONS IN RIVER BELAYA BOTTOMLAND OF REPUBLIC BASHKORTOSTAN</span></b></a><br><font color="#00008f"><i>Galinurov I.R., Safarov A.M., Shajdulina G.F., Magasumova A.T., Khatmullina R.M., Smirnova T.P.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730126">Башкирский химический журнал</a>. 
+2011. Т. 18. <a href="https://elibrary.ru/contents.asp?id=33730126&amp;selid=17391453">№&nbsp;4</a>.  С. 95-98.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391453" title="Список публикаций, цитирующих данную">10</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391457">
+<td align="center" valign="top"><font color="#00008f"><b>20</b></font><br><input type="checkbox" name="tid17391457" id="tid17391457" onclick="if (this.checked) {RowSelect(a17391457,1)} else {RowSelect(a17391457,0)}"><div id="pdf_17391457" name="pdf_17391457" style=""><a href="javascript:load_article(17391457)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391457"><b><span style="line-height:1.0;">A NEW METHOD FOR SELECTIVE REGULATION OF PERMEABILITY AND ENHANCED RECOVERY OF DEPLETED RESERVOIRS. REPORT 2. THE SELECTIVE INTENSIFICATION OF INJECTION WELLS</span></b></a><br><font color="#00008f"><i>Khlebnikov V.N., Guschina Ju.F., Vinokurov V.A.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730126">Башкирский химический журнал</a>. 
+2011. Т. 18. <a href="https://elibrary.ru/contents.asp?id=33730126&amp;selid=17391457">№&nbsp;4</a>.  С. 109-113.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391473">
+<td align="center" valign="top"><font color="#00008f"><b>21</b></font><br><input type="checkbox" name="tid17391473" id="tid17391473" onclick="if (this.checked) {RowSelect(a17391473,1)} else {RowSelect(a17391473,0)}"><div id="pdf_17391473" name="pdf_17391473" style=""><a href="javascript:load_article(17391473)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391473"><b><span style="line-height:1.0;">THE RHEOLOGICAL CHARACTERISTICS OF COMMODITY OIL OF THE WESTERN KAZAKHSTAN</span></b></a><br><font color="#00008f"><i>Karimov R.M., Mastobaev B.N.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730126">Башкирский химический журнал</a>. 
+2011. Т. 18. <a href="https://elibrary.ru/contents.asp?id=33730126&amp;selid=17391473">№&nbsp;4</a>.  С. 177-181.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391473" title="Список публикаций, цитирующих данную">4</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391474">
+<td align="center" valign="top"><font color="#00008f"><b>22</b></font><br><input type="checkbox" name="tid17391474" id="tid17391474" onclick="if (this.checked) {RowSelect(a17391474,1)} else {RowSelect(a17391474,0)}"><div id="pdf_17391474" name="pdf_17391474" style=""><a href="javascript:load_article(17391474)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391474"><b><span style="line-height:1.0;">THE STUDY OF HYDROTHERMAL INFLUENCE ON THE BAZHENOV FORMATION BREED</span></b></a><br><font color="#00008f"><i>Khlebnikov V.N., Zobov P.M., Antonov S.V., Bakulin D.A., Guschina Ju.F., Vinokurov V.A.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730126">Башкирский химический журнал</a>. 
+2011. Т. 18. <a href="https://elibrary.ru/contents.asp?id=33730126&amp;selid=17391474">№&nbsp;4</a>.  С. 182-187.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391474" title="Список публикаций, цитирующих данную">8</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391499">
+<td align="center" valign="top"><font color="#00008f"><b>23</b></font><br><input type="checkbox" name="tid17391499" id="tid17391499" onclick="if (this.checked) {RowSelect(a17391499,1)} else {RowSelect(a17391499,0)}"><div id="pdf_17391499" name="pdf_17391499" style=""><a href="javascript:load_article(17391499)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391499"><b><span style="line-height:1.0;">ИННОВАЦИОННОЕ РАЗВИТИЕ НЕФТЯНОЙ И ГАЗОВОЙ ПРОМЫШЛЕННОСТИ РОССИИ</span></b></a><br><font color="#00008f"><i>Дмитриевский А.Н.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730127">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730127&amp;selid=17391499">№&nbsp;1</a>.  С. 3-12.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391499" title="Список публикаций, цитирующих данную">22</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391502">
+<td align="center" valign="top"><font color="#00008f"><b>24</b></font><br><input type="checkbox" name="tid17391502" id="tid17391502" onclick="if (this.checked) {RowSelect(a17391502,1)} else {RowSelect(a17391502,0)}"><div id="pdf_17391502" name="pdf_17391502" style=""><a href="javascript:load_article(17391502)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391502"><b><span style="line-height:1.0;">ОСВОЕНИЕ УГЛЕВОДОРОДНЫХ РЕСУРСОВ СЕВЕРНОГО ЛЕДОВИТОГО ОКЕАНА -БЛИЖАЙШАЯ И НЕОТЛОЖНАЯ ПЕРСПЕКТИВА</span></b></a><br><font color="#00008f"><i>Гусейнов Ч.С.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730127">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730127&amp;selid=17391502">№&nbsp;1</a>.  С. 20-23.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391502" title="Список публикаций, цитирующих данную">16</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391503">
+<td align="center" valign="top"><font color="#00008f"><b>25</b></font><br><input type="checkbox" name="tid17391503" id="tid17391503" onclick="if (this.checked) {RowSelect(a17391503,1)} else {RowSelect(a17391503,0)}"><div id="pdf_17391503" name="pdf_17391503" style=""><a href="javascript:load_article(17391503)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391503"><b><span style="line-height:1.0;">МОДЕЛИ ОТНОСИТЕЛЬНЫХ ФАЗОВЫХ ПРОНИЦАЕМОСТЕЙ И УЧЕТ СВОЙСТВ ФЕС КОЛЛЕКТОРОВ</span></b></a><br><font color="#00008f"><i>Кожевников Д.А., Коваленко К.В., Дешененков И.С.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730127">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730127&amp;selid=17391503">№&nbsp;1</a>.  С. 24-26.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391503" title="Список публикаций, цитирующих данную">1</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391504">
+<td align="center" valign="top"><font color="#00008f"><b>26</b></font><br><input type="checkbox" name="tid17391504" id="tid17391504" onclick="if (this.checked) {RowSelect(a17391504,1)} else {RowSelect(a17391504,0)}"><div id="pdf_17391504" name="pdf_17391504" style=""><a href="javascript:load_article(17391504)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391504"><b><span style="line-height:1.0;">ОТСУТСТВИЕ АДДИТИВНОСТИ СВОЙСТВ НЕФТЯНЫХ СМЕСЕЙ</span></b></a><br><font color="#00008f"><i>Евдокимов И.Н., Лосев А.П., Фесан А.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730127">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730127&amp;selid=17391504">№&nbsp;1</a>.  С. 27-28.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391504" title="Список публикаций, цитирующих данную">35</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391505">
+<td align="center" valign="top"><font color="#00008f"><b>27</b></font><br><input type="checkbox" name="tid17391505" id="tid17391505" onclick="if (this.checked) {RowSelect(a17391505,1)} else {RowSelect(a17391505,0)}"><div id="pdf_17391505" name="pdf_17391505" style=""><a href="javascript:load_article(17391505)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391505"><b><span style="line-height:1.0;">УСКОРЕНИЕ ДЕФОРМАЦИОННО-МЕТАСОМАТИЧЕСКИХ ПРЕОБРАЗОВАНИЙ ЗАЛЕЖЕЙ НЕФТИ ПОД ВЛИЯНИЕМ ТЕХНОГЕННОЙ ТРЕЩИНОВАТОСТИ</span></b></a><br><font color="#00008f"><i>Гладков Е.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730127">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730127&amp;selid=17391505">№&nbsp;1</a>.  С. 29-31.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391505" title="Список публикаций, цитирующих данную">3</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391506">
+<td align="center" valign="top"><font color="#00008f"><b>28</b></font><br><input type="checkbox" name="tid17391506" id="tid17391506" onclick="if (this.checked) {RowSelect(a17391506,1)} else {RowSelect(a17391506,0)}"><div id="pdf_17391506" name="pdf_17391506" style=""><a href="javascript:load_article(17391506)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391506"><b><span style="line-height:1.0;">ВДОХНУТЬ ЖИЗНЬ В СКВАЖИНУ</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730127">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730127&amp;selid=17391506">№&nbsp;1</a>.  С. 32.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391507">
+<td align="center" valign="top"><font color="#00008f"><b>29</b></font><br><input type="checkbox" name="tid17391507" id="tid17391507" onclick="if (this.checked) {RowSelect(a17391507,1)} else {RowSelect(a17391507,0)}"><div id="pdf_17391507" name="pdf_17391507" style=""><a href="javascript:load_article(17391507)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391507"><b><span style="line-height:1.0;">ВЕРТИКАЛЬНОЕ СЕЙСМОПРОФИЛИРОВАНИЕ</span></b></a><br><font color="#00008f"><i>Решетняк В.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730127">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730127&amp;selid=17391507">№&nbsp;1</a>.  С. 33.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391508">
+<td align="center" valign="top"><font color="#00008f"><b>30</b></font><br><input type="checkbox" name="tid17391508" id="tid17391508" onclick="if (this.checked) {RowSelect(a17391508,1)} else {RowSelect(a17391508,0)}"><div id="pdf_17391508" name="pdf_17391508" style=""><a href="javascript:load_article(17391508)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391508"><b><span style="line-height:1.0;">КУМУЛЯТИВНАЯ ПЕРФОРАЦИЯ ПЛАСТОВ</span></b></a><br><font color="#00008f"><i>Пустовитов Д.Д.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730127">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730127&amp;selid=17391508">№&nbsp;1</a>.  С. 33-34.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391510">
+<td align="center" valign="top"><font color="#00008f"><b>31</b></font><br><input type="checkbox" name="tid17391510" id="tid17391510" onclick="if (this.checked) {RowSelect(a17391510,1)} else {RowSelect(a17391510,0)}"><div id="pdf_17391510" name="pdf_17391510" style=""><a href="javascript:load_article(17391510)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391510"><b><span style="line-height:1.0;">АНАЛИЗ КОЛЛЕКТОРСКИХ СВОЙСТВ АЧИМОВСКИХ ОТЛОЖЕНИЙ И ПРИМЕНЯЕМЫХ ТЕХНОЛОГИЙ ЗАКАНЧИВАНИЯ СКВАЖИН УРЕНГОЙСКОЙ ГРУППЫ МЕСТОРОЖДЕНИЙ</span></b></a><br><font color="#00008f"><i>Овчинников В.П., Аксенова Н.А., Герасимов Д.С., Каменский Л.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730127">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730127&amp;selid=17391510">№&nbsp;1</a>.  С. 38-40.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391510" title="Список публикаций, цитирующих данную">5</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391511">
+<td align="center" valign="top"><font color="#00008f"><b>32</b></font><br><input type="checkbox" name="tid17391511" id="tid17391511" onclick="if (this.checked) {RowSelect(a17391511,1)} else {RowSelect(a17391511,0)}"><div id="pdf_17391511" name="pdf_17391511" style=""><a href="javascript:load_article(17391511)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391511"><b><span style="line-height:1.0;">ПРОГНОЗИРОВАНИЕ НАПРЯЖЕННО-ДЕФОРМИРОВАННОГО СОСТОЯНИЯ КРЕПИ СКВАЖИНЫ В КРИОЛИТОЗОНЕ ПРИ ЛОКАЛЬНОМ ВОЗДЕЙСТВИИ ОСЕСИММЕТРИЧНОЙ НАГРУЗКИ</span></b></a><br><font color="#00008f"><i>Овчинников В.П., Аксенова Н.А., Герасимов Д.С., Каменский Л.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730127">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730127&amp;selid=17391511">№&nbsp;1</a>.  С. 41-43.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391511" title="Список публикаций, цитирующих данную">1</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391516">
+<td align="center" valign="top"><font color="#00008f"><b>33</b></font><br><input type="checkbox" name="tid17391516" id="tid17391516" onclick="if (this.checked) {RowSelect(a17391516,1)} else {RowSelect(a17391516,0)}"><div id="pdf_17391516" name="pdf_17391516" style=""><a href="javascript:load_article(17391516)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391516"><b><span style="line-height:1.0;">НЕФТЕГАЗСЕРВИС. ВРЕМЕНА, СОБЫТИЯ, ТЕХНОЛОГИИ</span></b></a><br><font color="#00008f"><i>Грегуль Н.И.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730127">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730127&amp;selid=17391516">№&nbsp;1</a>.  С. 60-61.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391517">
+<td align="center" valign="top"><font color="#00008f"><b>34</b></font><br><input type="checkbox" name="tid17391517" id="tid17391517" onclick="if (this.checked) {RowSelect(a17391517,1)} else {RowSelect(a17391517,0)}"><div id="pdf_17391517" name="pdf_17391517" style=""><a href="javascript:load_article(17391517)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391517"><b><span style="line-height:1.0;">НОВОСТИ</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730127">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730127&amp;selid=17391517">№&nbsp;1</a>.  С. 62-63.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391518">
+<td align="center" valign="top"><font color="#00008f"><b>35</b></font><br><input type="checkbox" name="tid17391518" id="tid17391518" onclick="if (this.checked) {RowSelect(a17391518,1)} else {RowSelect(a17391518,0)}"><div id="pdf_17391518" name="pdf_17391518" style=""><a href="javascript:load_article(17391518)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391518"><b><span style="line-height:1.0;">СТАТИСТИКА</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730127">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730127&amp;selid=17391518">№&nbsp;1</a>.  С. 64-65.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391520">
+<td align="center" valign="top"><font color="#00008f"><b>36</b></font><br><input type="checkbox" name="tid17391520" id="tid17391520" onclick="if (this.checked) {RowSelect(a17391520,1)} else {RowSelect(a17391520,0)}"><div id="pdf_17391520" name="pdf_17391520" style=""><a href="javascript:load_article(17391520)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391520"><b><span style="line-height:1.0;">МАРШ БУРОВИКОВ</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730127">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730127&amp;selid=17391520">№&nbsp;1</a>.  С. 68.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391525">
+<td align="center" valign="top"><font color="#00008f"><b>37</b></font><br><input type="checkbox" name="tid17391525" id="tid17391525" onclick="if (this.checked) {RowSelect(a17391525,1)} else {RowSelect(a17391525,0)}"><div id="pdf_17391525" name="pdf_17391525" style=""><a href="javascript:load_article(17391525)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391525"><b><span style="line-height:1.0;">КАК ОТБИТЬ ДЕМПИНГОВЫЕ АТАКИ НА ОТЕЧЕСТВЕННЫЕ ПРЕДПРИЯТИЯ?</span></b></a><br><font color="#00008f"><i>Сулейманов А.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730128">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730128&amp;selid=17391525">№&nbsp;2</a>.  С. 19-20.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391526">
+<td align="center" valign="top"><font color="#00008f"><b>38</b></font><br><input type="checkbox" name="tid17391526" id="tid17391526" onclick="if (this.checked) {RowSelect(a17391526,1)} else {RowSelect(a17391526,0)}"><div id="pdf_17391526" name="pdf_17391526" style=""><a href="javascript:load_article(17391526)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391526"><b><span style="line-height:1.0;">РОССИЙСКОМУ НЕФТЕСЕРВИСНОМУ РЫНКУ ТРЕБУЮТСЯ РЕГУЛЯТОРЫ</span></b></a><br><font color="#00008f"><i>Талипов А.Р.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730128">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730128&amp;selid=17391526">№&nbsp;2</a>.  С. 20-21.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391527">
+<td align="center" valign="top"><font color="#00008f"><b>39</b></font><br><input type="checkbox" name="tid17391527" id="tid17391527" onclick="if (this.checked) {RowSelect(a17391527,1)} else {RowSelect(a17391527,0)}"><div id="pdf_17391527" name="pdf_17391527" style=""><a href="javascript:load_article(17391527)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391527"><b><span style="line-height:1.0;">ЛОББИ ДЛЯ ОТЕЧЕСТВЕННОГО СЕРВИСА</span></b></a><br><font color="#00008f"><i>Шраго И.Л.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730128">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730128&amp;selid=17391527">№&nbsp;2</a>.  С. 21.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391529">
+<td align="center" valign="top"><font color="#00008f"><b>40</b></font><br><input type="checkbox" name="tid17391529" id="tid17391529" onclick="if (this.checked) {RowSelect(a17391529,1)} else {RowSelect(a17391529,0)}"><div id="pdf_17391529" name="pdf_17391529" style=""><a href="javascript:load_article(17391529)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391529"><b><span style="line-height:1.0;">ОЦЕНКА ПРОНИЦАЕМОСТИ И СТЕПЕНИ УЧАСТИЯ ПРОДУКТИВНОГО ПЛАСТА В ПРОЦЕССЕ ФИЛЬТРАЦИИ</span></b></a><br><font color="#00008f"><i>Крыганов П.В., Колеватов А.А., Вольпин С.Г.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730128">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730128&amp;selid=17391529">№&nbsp;2</a>.  С. 26-28.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391529" title="Список публикаций, цитирующих данную">9</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391530">
+<td align="center" valign="top"><font color="#00008f"><b>41</b></font><br><input type="checkbox" name="tid17391530" id="tid17391530" onclick="if (this.checked) {RowSelect(a17391530,1)} else {RowSelect(a17391530,0)}"><div id="pdf_17391530" name="pdf_17391530" style=""><a href="javascript:load_article(17391530)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391530"><b><span style="line-height:1.0;">ПОВЫШЕНИЕ ЭФФЕКТИВНОСТИ МЕТОДА ВНУТРИПЛАСТОВОГО ГОРЕНИЯ ПРИ ИСПОЛЬЗОВАНИИ ГОРИЗОНТАЛЬНЫХ СКВАЖИН</span></b></a><br><font color="#00008f"><i>Афанаскин И.В.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730128">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730128&amp;selid=17391530">№&nbsp;2</a>.  С. 29-32.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391530" title="Список публикаций, цитирующих данную">4</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391531">
+<td align="center" valign="top"><font color="#00008f"><b>42</b></font><br><input type="checkbox" name="tid17391531" id="tid17391531" onclick="if (this.checked) {RowSelect(a17391531,1)} else {RowSelect(a17391531,0)}"><div id="pdf_17391531" name="pdf_17391531" style=""><a href="javascript:load_article(17391531)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391531"><b><span style="line-height:1.0;">БОГДАНОВ - ОСНОВАТЕЛЬ ОСОБОГО КОНСТРУКТОРСКОГО БЮРО ПО БЕСШТАНГОВЫМ НАСОСАМ (ОКБ БН). К 100-ЛЕТИЮ СО ДНЯ РОЖДЕНИЯ</span></b></a><br><font color="#00008f"><i>Агеев Ш.Р., Балденко Д.Ф., Протас Э.С.А.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730128">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730128&amp;selid=17391531">№&nbsp;2</a>.  С. 34-37.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391532">
+<td align="center" valign="top"><font color="#00008f"><b>43</b></font><br><input type="checkbox" name="tid17391532" id="tid17391532" onclick="if (this.checked) {RowSelect(a17391532,1)} else {RowSelect(a17391532,0)}"><div id="pdf_17391532" name="pdf_17391532" style=""><a href="javascript:load_article(17391532)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391532"><b><span style="line-height:1.0;">К ВОПРОСУ О РАСЧЕТЕ И МЕТОДЕ ИСПЫТАНИЙ НАСОСОВ НА ГЖС. МЕТОД РАСЧЕТА И ТРЕБОВАНИЯ К МЕТОДИКЕ ПОЛУЧЕНИЯ ХАРАКТЕРИСТИКИ ЕДИНИЧНОЙ СТУПЕНИ</span></b></a><br><font color="#00008f"><i>Гилев В.Г., Рабинович А.И., Кобяков А.Е.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730128">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730128&amp;selid=17391532">№&nbsp;2</a>.  С. 38-42.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391532" title="Список публикаций, цитирующих данную">4</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391534">
+<td align="center" valign="top"><font color="#00008f"><b>44</b></font><br><input type="checkbox" name="tid17391534" id="tid17391534" onclick="if (this.checked) {RowSelect(a17391534,1)} else {RowSelect(a17391534,0)}"><div id="pdf_17391534" name="pdf_17391534" style=""><a href="javascript:load_article(17391534)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391534"><b><span style="line-height:1.0;">НОВОЕ РЕШЕНИЕ ПРОБЛЕМЫ ГЕРМЕТИЧНОСТИ РЕЗЬБОВЫХ СОЕДИНЕНИЙ ОБСАДНЫХ КОЛОНН С ИСПОЛЬЗОВАНИЕМ "ТЕХНОЛОГИИ ЧИСТОГО СВИНЧИВАНИЯ" (CLEAR MAKE UP TECHNOLOGY ИЛИ СМТ)</span></b></a><br><font color="#00008f"><i>Емельянов А.В., Токарев А.В.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730128">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730128&amp;selid=17391534">№&nbsp;2</a>.  С. 46-48.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391534" title="Список публикаций, цитирующих данную">5</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391535">
+<td align="center" valign="top"><font color="#00008f"><b>45</b></font><br><input type="checkbox" name="tid17391535" id="tid17391535" onclick="if (this.checked) {RowSelect(a17391535,1)} else {RowSelect(a17391535,0)}"><div id="pdf_17391535" name="pdf_17391535" style=""><a href="javascript:load_article(17391535)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391535"><b><span style="line-height:1.0;">СОВЕРШЕНСТВОВАНИЕ ТЕХНОЛОГИЧЕСКИХ РЕШЕНИЙ ПРИ ЦЕМЕНТИРОВАНИИ СКВАЖИН С ИСПОЛЬЗОВАНИЕМ ОДНОНАСОСНЫХ УСТАНОВОК</span></b></a><br><font color="#00008f"><i>Газизуллин К.В., Ременников Ф.А., Болотов А.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730128">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730128&amp;selid=17391535">№&nbsp;2</a>.  С. 49-52.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391535" title="Список публикаций, цитирующих данную">2</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391536">
+<td align="center" valign="top"><font color="#00008f"><b>46</b></font><br><input type="checkbox" name="tid17391536" id="tid17391536" onclick="if (this.checked) {RowSelect(a17391536,1)} else {RowSelect(a17391536,0)}"><div id="pdf_17391536" name="pdf_17391536" style=""><a href="javascript:load_article(17391536)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391536"><b><span style="line-height:1.0;">ВЗАИМОСВЯЗЬ ГЕОМЕХАНИКИ И ДЕФОРМАЦИОННО-МЕТАСОМАТИЧЕСКОГО ИЗМЕНЕНИЯ ЗАЛЕЖЕЙ УГЛЕВОДОРОДОВ</span></b></a><br><font color="#00008f"><i>Гладков Е.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730128">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730128&amp;selid=17391536">№&nbsp;2</a>.  С. 54-56.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17391536" title="Список публикаций, цитирующих данную">19</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391538">
+<td align="center" valign="top"><font color="#00008f"><b>47</b></font><br><input type="checkbox" name="tid17391538" id="tid17391538" onclick="if (this.checked) {RowSelect(a17391538,1)} else {RowSelect(a17391538,0)}"><div id="pdf_17391538" name="pdf_17391538" style=""><a href="javascript:load_article(17391538)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391538"><b><span style="line-height:1.0;">НОВОСТИ</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730128">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730128&amp;selid=17391538">№&nbsp;2</a>.  С. 62-65.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17391539">
+<td align="center" valign="top"><font color="#00008f"><b>48</b></font><br><input type="checkbox" name="tid17391539" id="tid17391539" onclick="if (this.checked) {RowSelect(a17391539,1)} else {RowSelect(a17391539,0)}"><div id="pdf_17391539" name="pdf_17391539" style=""><a href="javascript:load_article(17391539)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17391539"><b><span style="line-height:1.0;">"О, DOLCE NAPOLI" НЕАПОЛЬ ГЛАЗАМИ ИТАЛЬЯНСКИХ И РУССКИХ ХУДОЖНИКОВ ПЕРВОЙ ПОЛОВИНЫ XIX ВЕКА</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730128">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730128&amp;selid=17391539">№&nbsp;2</a>.  С. 66-67.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17392182">
+<td align="center" valign="top"><font color="#00008f"><b>49</b></font><br><input type="checkbox" name="tid17392182" id="tid17392182" onclick="if (this.checked) {RowSelect(a17392182,1)} else {RowSelect(a17392182,0)}"><div id="pdf_17392182" name="pdf_17392182" style=""><a href="javascript:load_article(17392182)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17392182"><b><span style="line-height:1.0;">ПЕРСПЕКТИВЫ ЮРСКИХ ОТЛОЖЕНИЙ В НАДЫМ-ПУРСКОЙ НЕФТЕГАЗОНОСНОЙ ОБЛАСТИ. ЧАСТЬ I</span></b></a><br><font color="#00008f"><i>Гладышева Я.И., Гладышев А.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730157">Известия высших учебных заведений. Нефть и газ</a>. 
+2011. <a href="https://elibrary.ru/contents.asp?id=33730157&amp;selid=17392182">№&nbsp;5&nbsp;(89)</a>.  С. 17-25.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17392182" title="Список публикаций, цитирующих данную">2</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17392185">
+<td align="center" valign="top"><font color="#00008f"><b>50</b></font><br><input type="checkbox" name="tid17392185" id="tid17392185" onclick="if (this.checked) {RowSelect(a17392185,1)} else {RowSelect(a17392185,0)}"><div id="pdf_17392185" name="pdf_17392185" style=""><a href="javascript:load_article(17392185)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17392185"><b><span style="line-height:1.0;">МОДЕЛИРОВАНИЕ РАБОТЫ ЗАЛЕЖИ С ПРИМЕНЕНИЕМ МЕТОДА МАТЕРИАЛЬНОГО БАЛАНСА</span></b></a><br><font color="#00008f"><i>Рублев А.Б., Федоров К.М., Шевелёв А.П., Им П.Т.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730157">Известия высших учебных заведений. Нефть и газ</a>. 
+2011. <a href="https://elibrary.ru/contents.asp?id=33730157&amp;selid=17392185">№&nbsp;5&nbsp;(89)</a>.  С. 32-40.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17392185" title="Список публикаций, цитирующих данную">3</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17392186">
+<td align="center" valign="top"><font color="#00008f"><b>51</b></font><br><input type="checkbox" name="tid17392186" id="tid17392186" onclick="if (this.checked) {RowSelect(a17392186,1)} else {RowSelect(a17392186,0)}"><div id="pdf_17392186" name="pdf_17392186" style=""><a href="javascript:load_article(17392186)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17392186"><b><span style="line-height:1.0;">ЭКСПЕРИМЕНТАЛЬНОЕ ИССЛЕДОВАНИЕ ФАЗОВОГО ПОВЕДЕНИЯ МНОГОКОМПОНЕНТНЫХ СМЕСЕЙ В ВИДЕ ПСЕВДОБИНАРНЫХ</span></b></a><br><font color="#00008f"><i>Булейко В.М., Булейко В.В.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730157">Известия высших учебных заведений. Нефть и газ</a>. 
+2011. <a href="https://elibrary.ru/contents.asp?id=33730157&amp;selid=17392186">№&nbsp;5&nbsp;(89)</a>.  С. 40-46.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17392186" title="Список публикаций, цитирующих данную">2</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17392187">
+<td align="center" valign="top"><font color="#00008f"><b>52</b></font><br><input type="checkbox" name="tid17392187" id="tid17392187" onclick="if (this.checked) {RowSelect(a17392187,1)} else {RowSelect(a17392187,0)}"><div id="pdf_17392187" name="pdf_17392187" style=""><a href="javascript:load_article(17392187)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17392187"><b><span style="line-height:1.0;">ОСОБЕННОСТИ ИЗМЕНЕНИЯ СВЯЗЕЙ ВАРИАЦИЙ СИЛЫ ТЯЖЕСТИ С ИЗМЕНЕНИЯМИ ПЛАСТОВОГО ДАВЛЕНИЯ</span></b></a><br><font color="#00008f"><i>Полын И.И., Серкеров С.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730157">Известия высших учебных заведений. Нефть и газ</a>. 
+2011. <a href="https://elibrary.ru/contents.asp?id=33730157&amp;selid=17392187">№&nbsp;5&nbsp;(89)</a>.  С. 46-51.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17392187" title="Список публикаций, цитирующих данную">1</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17392188">
+<td align="center" valign="top"><font color="#00008f"><b>53</b></font><br><input type="checkbox" name="tid17392188" id="tid17392188" onclick="if (this.checked) {RowSelect(a17392188,1)} else {RowSelect(a17392188,0)}"><div id="pdf_17392188" name="pdf_17392188" style=""><a href="javascript:load_article(17392188)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17392188"><b><span style="line-height:1.0;">ПРОБЛЕМЫ МЕЖКОЛОННЫХ ГАЗОПРОЯВЛЕНИЙ НА СКВАЖИНАХ</span></b></a><br><font color="#00008f"><i>Журавлев В.В., Чижова Т.И., Шестакова Н.А., Кустышев А.В.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730157">Известия высших учебных заведений. Нефть и газ</a>. 
+2011. <a href="https://elibrary.ru/contents.asp?id=33730157&amp;selid=17392188">№&nbsp;5&nbsp;(89)</a>.  С. 52-55.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17392188" title="Список публикаций, цитирующих данную">2</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17392189">
+<td align="center" valign="top"><font color="#00008f"><b>54</b></font><br><input type="checkbox" name="tid17392189" id="tid17392189" onclick="if (this.checked) {RowSelect(a17392189,1)} else {RowSelect(a17392189,0)}"><div id="pdf_17392189" name="pdf_17392189" style=""><a href="javascript:load_article(17392189)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17392189"><b><span style="line-height:1.0;">ГИДРОРАЗРЫВ ПЛАСТА - ЭФФЕКТИВНЫЙ МЕТОД ДОИЗВЛЕЧЕНИЯ ЗАПАСОВ НЕФТИ И ГАЗА</span></b></a><br><font color="#00008f"><i>Паняк С.Г., Аскеров А.А.О., Юсифов Т.Ю.О.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730157">Известия высших учебных заведений. Нефть и газ</a>. 
+2011. <a href="https://elibrary.ru/contents.asp?id=33730157&amp;selid=17392189">№&nbsp;5&nbsp;(89)</a>.  С. 56-59.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17392189" title="Список публикаций, цитирующих данную">7</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17392190">
+<td align="center" valign="top"><font color="#00008f"><b>55</b></font><br><input type="checkbox" name="tid17392190" id="tid17392190" onclick="if (this.checked) {RowSelect(a17392190,1)} else {RowSelect(a17392190,0)}"><div id="pdf_17392190" name="pdf_17392190" style=""><a href="javascript:load_article(17392190)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17392190"><b><span style="line-height:1.0;">МОДЕЛИРОВАНИЕ ДЕФОРМАЦИЙ ПЕРФОРАЦИОННЫХ ОТВЕРСТИЙ ПРИ РАЗЛИЧНЫХ РЕЖИМАХ РАБОТЫ ЭКСПЛУАТАЦИОННОЙ СКВАЖИНЫ</span></b></a><br><font color="#00008f"><i>Попов С.Н.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730157">Известия высших учебных заведений. Нефть и газ</a>. 
+2011. <a href="https://elibrary.ru/contents.asp?id=33730157&amp;selid=17392190">№&nbsp;5&nbsp;(89)</a>.  С. 59-62.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17392190" title="Список публикаций, цитирующих данную">7</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17392198">
+<td align="center" valign="top"><font color="#00008f"><b>56</b></font><br><input type="checkbox" name="tid17392198" id="tid17392198" onclick="if (this.checked) {RowSelect(a17392198,1)} else {RowSelect(a17392198,0)}"><div id="pdf_17392198" name="pdf_17392198" style=""><a href="javascript:load_article(17392198)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17392198"><b><span style="line-height:1.0;">РОСТ И ДИССОЦИАЦИЯ ГАЗОГИДРАТА В ВОДОНЕФТЯНОЙ ЭМУЛЬСИИ</span></b></a><br><font color="#00008f"><i>Ширшова А.В., Данько М.Ю.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730157">Известия высших учебных заведений. Нефть и газ</a>. 
+2011. <a href="https://elibrary.ru/contents.asp?id=33730157&amp;selid=17392198">№&nbsp;5&nbsp;(89)</a>.  С. 93-99.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17392198" title="Список публикаций, цитирующих данную">5</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17392201">
+<td align="center" valign="top"><font color="#00008f"><b>57</b></font><br><input type="checkbox" name="tid17392201" id="tid17392201" onclick="if (this.checked) {RowSelect(a17392201,1)} else {RowSelect(a17392201,0)}"><div id="pdf_17392201" name="pdf_17392201" style=""><a href="javascript:load_article(17392201)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17392201"><b><span style="line-height:1.0;">ОЦЕНКА ЭФФЕКТИВНОСТИ МЕТОДОВ ПРИНЯТИЯ РЕШЕНИЙ В НЕЧЕТКИХ УСЛОВИЯХ</span></b></a><br><font color="#00008f"><i>Катанов Ю.Е.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730157">Известия высших учебных заведений. Нефть и газ</a>. 
+2011. <a href="https://elibrary.ru/contents.asp?id=33730157&amp;selid=17392201">№&nbsp;5&nbsp;(89)</a>.  С. 106-111.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17392201" title="Список публикаций, цитирующих данную">4</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17392204">
+<td align="center" valign="top"><font color="#00008f"><b>58</b></font><br><input type="checkbox" name="tid17392204" id="tid17392204" onclick="if (this.checked) {RowSelect(a17392204,1)} else {RowSelect(a17392204,0)}"><div id="pdf_17392204" name="pdf_17392204" style=""><a href="javascript:load_article(17392204)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17392204"><b><span style="line-height:1.0;">ВЛИЯНИЕ КОАГУЛЯНТОВ НА УЛУЧШЕНИЕ ФИЗИКО-ХИМИЧЕСКИХ СВОЙСТВ БУРОВЫХ ШЛАМОВ</span></b></a><br><font color="#00008f"><i>Петухова В.С., Скипин Л.Н., Галямов А.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730157">Известия высших учебных заведений. Нефть и газ</a>. 
+2011. <a href="https://elibrary.ru/contents.asp?id=33730157&amp;selid=17392204">№&nbsp;5&nbsp;(89)</a>.  С. 120-123.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17392204" title="Список публикаций, цитирующих данную">4</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17392205">
+<td align="center" valign="top"><font color="#00008f"><b>59</b></font><br><input type="checkbox" name="tid17392205" id="tid17392205" onclick="if (this.checked) {RowSelect(a17392205,1)} else {RowSelect(a17392205,0)}"><div id="pdf_17392205" name="pdf_17392205" style=""><a href="javascript:load_article(17392205)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17392205"><b><span style="line-height:1.0;">ПРОБЛЕМЫ ЭКОЛОГИИ В НЕФТЕГАЗОВОЙ ОТРАСЛИ НА ТЮМЕНСКОМ СЕВЕРЕ</span></b></a><br><font color="#00008f"><i>Мамаева Н.Л., Квашнина С.И.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730157">Известия высших учебных заведений. Нефть и газ</a>. 
+2011. <a href="https://elibrary.ru/contents.asp?id=33730157&amp;selid=17392205">№&nbsp;5&nbsp;(89)</a>.  С. 123-125.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17392205" title="Список публикаций, цитирующих данную">11</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17393857">
+<td align="center" valign="top"><font color="#00008f"><b>60</b></font><br><input type="checkbox" name="tid17393857" id="tid17393857" onclick="if (this.checked) {RowSelect(a17393857,1)} else {RowSelect(a17393857,0)}"><div id="pdf_17393857" name="pdf_17393857" style=""><a href="javascript:load_article(17393857)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17393857"><b><span style="line-height:1.0;">УСЛОВИЯ ГЕНЕРАЦИИ НЕФТЕЙ БАЖЕНОВСКОГО ТИПА В ЮГО-ВОСТОЧНОЙ ЧАСТИ НИЖНЕВАРТОВСКОГО СВОДА</span></b></a><br><font color="#00008f"><i>Исаев В.И., Лобова Г.А., Васильев П.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730187">Вестник Югорского государственного университета</a>. 
+2006. <a href="https://elibrary.ru/contents.asp?id=33730187&amp;selid=17393857">№&nbsp;3&nbsp;(4)</a>.  С. 41-45.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17393857" title="Список публикаций, цитирующих данную">2</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17393870">
+<td align="center" valign="top"><font color="#00008f"><b>61</b></font><br><input type="checkbox" name="tid17393870" id="tid17393870" onclick="if (this.checked) {RowSelect(a17393870,1)} else {RowSelect(a17393870,0)}"><div id="pdf_17393870" name="pdf_17393870" style=""><a href="javascript:load_article(17393870)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17393870"><b><span style="line-height:1.0;">ПРИМЕНЕНИЕ ТЕХНОЛОГИИ МИКРОСЕЙСМИЧЕСКОГО МОНИТОРИНГА МЕСТОРОЖДЕНИЙ ДЛЯ ОПРЕДЕЛЕНИЯ ЗОН СЕЙСМИЧЕСКОЙ ЭМИССИИ</span></b></a><br><font color="#00008f"><i>Шмаков Ф.Д.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730187">Вестник Югорского государственного университета</a>. 
+2006. <a href="https://elibrary.ru/contents.asp?id=33730187&amp;selid=17393870">№&nbsp;3&nbsp;(4)</a>.  С. 122-128.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17393870" title="Список публикаций, цитирующих данную">1</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17393911">
+<td align="center" valign="top"><font color="#00008f"><b>62</b></font><br><input type="checkbox" name="tid17393911" id="tid17393911" onclick="if (this.checked) {RowSelect(a17393911,1)} else {RowSelect(a17393911,0)}"><div id="pdf_17393911" name="pdf_17393911" style=""><a href="javascript:load_article(17393911)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17393911"><b><span style="line-height:1.0;">КОРРЕЛЯЦИЯ ПЛОТНОСТНОЙ СТРУКТУРЫ ДОЮРСКИХ ОТЛОЖЕНИЙ И ЗОН НЕФТЕГАЗОНАКОПЛЕНИЯ НА ТРАВЕРСЕ КРСНОЛЕНИНСКИЙ СВОД - ЛЯПИНСКИЙ МЕГАПРОГИБ</span></b></a><br><font color="#00008f"><i>Лобова Г.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730189">Вестник Югорского государственного университета</a>. 
+2007. <a href="https://elibrary.ru/contents.asp?id=33730189&amp;selid=17393911">№&nbsp;1&nbsp;(6)</a>.  С. 47-60.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394078">
+<td align="center" valign="top"><font color="#00008f"><b>63</b></font><br><input type="checkbox" name="tid17394078" id="tid17394078" onclick="if (this.checked) {RowSelect(a17394078,1)} else {RowSelect(a17394078,0)}"><div id="pdf_17394078" name="pdf_17394078" style=""><a href="javascript:load_article(17394078)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394078"><b><span style="line-height:1.0;">СОВРЕМЕННОЕ СОСТОЯНИЕ И ПЕРСПЕКТИВЫ РАЗВИТИЯ ОТЕЧЕСТВЕННЫХ ВИНТОВЫХ ЗАБОЙНЫХ ДВИГАТЕЛЕЙ</span></b></a><br><font color="#00008f"><i>Балденко Д.Ф., Коротаев Ю.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730197">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730197&amp;selid=17394078">№&nbsp;3</a>.  С. 3-7.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17394078" title="Список публикаций, цитирующих данную">17</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394079">
+<td align="center" valign="top"><font color="#00008f"><b>64</b></font><br><input type="checkbox" name="tid17394079" id="tid17394079" onclick="if (this.checked) {RowSelect(a17394079,1)} else {RowSelect(a17394079,0)}"><div id="pdf_17394079" name="pdf_17394079" style=""><a href="javascript:load_article(17394079)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394079"><b><span style="line-height:1.0;">ТРАНСПОРТНОЕ ОБЕСПЕЧЕНИЕ РАЗВИТИЯ МИНЕРАЛЬНО-СЫРЬЕВЫХ ЦЕНТРОВ НЕФТИ ТИМАНО-ПЕЧОРСКОЙ ПРОВИНЦИИ</span></b></a><br><font color="#00008f"><i>Григорьев М.Н.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730197">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730197&amp;selid=17394079">№&nbsp;3</a>.  С. 8-14.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17394079" title="Список публикаций, цитирующих данную">4</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394081">
+<td align="center" valign="top"><font color="#00008f"><b>65</b></font><br><input type="checkbox" name="tid17394081" id="tid17394081" onclick="if (this.checked) {RowSelect(a17394081,1)} else {RowSelect(a17394081,0)}"><div id="pdf_17394081" name="pdf_17394081" style=""><a href="javascript:load_article(17394081)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394081"><b><span style="line-height:1.0;">РАСЧЕТ КПД НАСОСНО-ЭЖЕКТОРНОЙ СИСТЕМЫ</span></b></a><br><font color="#00008f"><i>Дроздов А.Н.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730197">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730197&amp;selid=17394081">№&nbsp;3</a>.  С. 26-28.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17394081" title="Список публикаций, цитирующих данную">3</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394084">
+<td align="center" valign="top"><font color="#00008f"><b>66</b></font><br><input type="checkbox" name="tid17394084" id="tid17394084" onclick="if (this.checked) {RowSelect(a17394084,1)} else {RowSelect(a17394084,0)}"><div id="pdf_17394084" name="pdf_17394084" style=""><a href="javascript:load_article(17394084)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394084"><b><span style="line-height:1.0;">ПОЧЕМУ СЕРВИСНЫЕ КОМПАНИИ КРЕДИТУЮТ НЕФТЕДОБЫЧУ?!</span></b></a><br><font color="#00008f"><i>Некрасов И.Н., Абдразаков Р.М.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730197">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730197&amp;selid=17394084">№&nbsp;3</a>.  С. 36-37.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394085">
+<td align="center" valign="top"><font color="#00008f"><b>67</b></font><br><input type="checkbox" name="tid17394085" id="tid17394085" onclick="if (this.checked) {RowSelect(a17394085,1)} else {RowSelect(a17394085,0)}"><div id="pdf_17394085" name="pdf_17394085" style=""><a href="javascript:load_article(17394085)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394085"><b><span style="line-height:1.0;">ПРИМЕНЕНИЕ ФРАКЦИОННОГО КАРБОНАТА КАЛЬЦИЯ В СОСТАВЕ ИНВЕРТНО-ЭМУЛЬСИОННОГО БУРОВОГО РАСТВОРА ДЛЯ СНИЖЕНИЯ ЗАГРЯЗНЕНИЯ ПРОДУКТИВНЫХ ПЛАСТОВ</span></b></a><br><font color="#00008f"><i>Ишбаев Г.Г., Дильмиев М.Р., Христенко А.В., Милейко А.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730197">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730197&amp;selid=17394085">№&nbsp;3</a>.  С. 40-43.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17394085" title="Список публикаций, цитирующих данную">3</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394088">
+<td align="center" valign="top"><font color="#00008f"><b>68</b></font><br><input type="checkbox" name="tid17394088" id="tid17394088" onclick="if (this.checked) {RowSelect(a17394088,1)} else {RowSelect(a17394088,0)}"><div id="pdf_17394088" name="pdf_17394088" style=""><a href="javascript:load_article(17394088)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394088"><b><span style="line-height:1.0;">КОМПАНИЯ "БИЯ-ХИМ" - СПЛАВ ПЕРЕДОВЫХ НАУЧНЫХ ТЕХНОЛОГИЙ И СОВРЕМЕННОГО ПРОИЗВОДСТВЕННОГО ПРОЦЕССА</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730197">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730197&amp;selid=17394088">№&nbsp;3</a>.  С. 50-51.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394089">
+<td align="center" valign="top"><font color="#00008f"><b>69</b></font><br><input type="checkbox" name="tid17394089" id="tid17394089" onclick="if (this.checked) {RowSelect(a17394089,1)} else {RowSelect(a17394089,0)}"><div id="pdf_17394089" name="pdf_17394089" style=""><a href="javascript:load_article(17394089)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394089"><b><span style="line-height:1.0;">ОПТИМИЗАЦИЯ ГИДРАВЛИКИ БУРЕНИЯ ГЛУБОКИХ СКВАЖИН ПРИ БУРЕНИИ ДОЛОТАМИ ТИПА PDC</span></b></a><br><font color="#00008f"><i>Корчагин П.Н., Корчагин Д.Н., Охотников А.Б., Тарасов О.Г., Маслов В.В., Солижонов С.О.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730197">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730197&amp;selid=17394089">№&nbsp;3</a>.  С. 52-54.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17394089" title="Список публикаций, цитирующих данную">2</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394093">
+<td align="center" valign="top"><font color="#00008f"><b>70</b></font><br><input type="checkbox" name="tid17394093" id="tid17394093" onclick="if (this.checked) {RowSelect(a17394093,1)} else {RowSelect(a17394093,0)}"><div id="pdf_17394093" name="pdf_17394093" style=""><a href="javascript:load_article(17394093)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394093"><b><span style="line-height:1.0;">СЦЕМЕНТИРОВАВШИЙ НАУКУ И ПРОИЗВОДСТВО</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730197">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730197&amp;selid=17394093">№&nbsp;3</a>.  С. 66.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394094">
+<td align="center" valign="top"><font color="#00008f"><b>71</b></font><br><input type="checkbox" name="tid17394094" id="tid17394094" onclick="if (this.checked) {RowSelect(a17394094,1)} else {RowSelect(a17394094,0)}"><div id="pdf_17394094" name="pdf_17394094" style=""><a href="javascript:load_article(17394094)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394094"><b><span style="line-height:1.0;">НОВОСТИ</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730197">Бурение и нефть</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730197&amp;selid=17394094">№&nbsp;3</a>.  С. 68.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394208">
+<td align="center" valign="top"><font color="#00008f"><b>72</b></font><br><input type="checkbox" name="tid17394208" id="tid17394208" onclick="if (this.checked) {RowSelect(a17394208,1)} else {RowSelect(a17394208,0)}"><div id="pdf_17394208" name="pdf_17394208" style=""><a href="javascript:load_article(17394208)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394208"><b><span style="line-height:1.0;">О НЕФТЕГАЗОНОСНОСТИ ЗАПАДНОЙ СИБИРИ С ПОЗИЦИЙ МОБИЛИЗМА</span></b></a><br><font color="#00008f"><i>Мочалкина Л.Н.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730204">Вестник Югорского государственного университета</a>. 
+2009. <a href="https://elibrary.ru/contents.asp?id=33730204&amp;selid=17394208">№&nbsp;3&nbsp;(14)</a>.  С. 70-73.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17394208" title="Список публикаций, цитирующих данную">6</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394263">
+<td align="center" valign="top"><font color="#00008f"><b>73</b></font><br><input type="checkbox" name="tid17394263" id="tid17394263" onclick="if (this.checked) {RowSelect(a17394263,1)} else {RowSelect(a17394263,0)}"><div id="pdf_17394263" name="pdf_17394263" style=""><a href="javascript:load_article(17394263)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394263"><b><span style="line-height:1.0;">ЧИСЛЕННЫЙ МЕТОД ОПТИМИЗАЦИИ РАСПРЕДЕЛЕНИЯ РЕСУРСОВ ДЛЯ СИСТЕМЫ ОБРАЗОВАТЕЛЬНЫХ УЧРЕЖДЕНИЙ</span></b></a><br><font color="#00008f"><i>Карминская Т.Д., Ковалев В.З., Ципорин П.И., Архипова О.В.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730209">Вестник Югорского государственного университета</a>. 
+2010. <a href="https://elibrary.ru/contents.asp?id=33730209&amp;selid=17394263">№&nbsp;4&nbsp;(19)</a>.  С. 11-14.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17394263" title="Список публикаций, цитирующих данную">1</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394471">
+<td align="center" valign="top"><font color="#00008f"><b>74</b></font><br><input type="checkbox" name="tid17394471" id="tid17394471" onclick="if (this.checked) {RowSelect(a17394471,1)} else {RowSelect(a17394471,0)}"><div id="pdf_17394471" name="pdf_17394471" style=""><a href="javascript:load_article(17394471)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394471"><b><span style="line-height:1.0;">МАТЕМАТИЧЕСКОЕ МОДЕЛИРОВАНИЕ ГРАВИТАЦИОННОГО СЕПАРАТОРА ДЛЯ ОЧИСТКИ ЖИДКОСТИ ОТ МЕХАНИЧЕСКИХ ПРИМЕСЕЙ</span></b></a><br><font color="#00008f"><i>Антипина Н.А., Пещеренко С.Н.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730219">Проблемы механики и управления: Нелинейные динамические системы</a>. 
+2010. <a href="https://elibrary.ru/contents.asp?id=33730219&amp;selid=17394471">№&nbsp;42</a>.  С. 4-11.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394637">
+<td align="center" valign="top"><font color="#00008f"><b>75</b></font><br><input type="checkbox" name="tid17394637" id="tid17394637" onclick="if (this.checked) {RowSelect(a17394637,1)} else {RowSelect(a17394637,0)}"><div id="pdf_17394637" name="pdf_17394637" style=""></div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394637"><b><span style="line-height:1.0;">ОБЕСПЕЧЕНИЕ БЕЗОПАСНОСТИ ЛИКВИДИРОВАННЫХ СКВАЖИН</span></b></a><br><font color="#00008f"><i>Мартынов В.Г., Ермолаев А.И., Казаков В.М., Кондратенко Е.В.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730229">Промышленный сервис</a>. 
+2011. <a href="https://elibrary.ru/contents.asp?id=33730229&amp;selid=17394637">№&nbsp;3</a>.  С. 34-37.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17394637" title="Список публикаций, цитирующих данную">3</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394681">
+<td align="center" valign="top"><font color="#00008f"><b>76</b></font><br><input type="checkbox" name="tid17394681" id="tid17394681" onclick="if (this.checked) {RowSelect(a17394681,1)} else {RowSelect(a17394681,0)}"><div id="pdf_17394681" name="pdf_17394681" style=""></div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394681"><b><span style="line-height:1.0;">ИНЖЕНЕРНОЕ СЕРВИСНОЕ СОПРОВОЖДЕНИЕ ГЛУБОКОГО ОБЕЗВОЖИВАНИЯ И ОБЕССОЛИВАНИЯ НЕФТЕЙ И ХИМИКО-ТЕХНОЛОГИЧЕСКОЙ ЗАЩИТЫ ОТ КОРРОЗИИ КОНДЕНСАЦИОННО-ХОЛОДИЛЬНОГО ОБОРУДОВАНИЯ</span></b></a><br><font color="#00008f"><i>Хуторянский Ф.М., Цветков А.Л.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730231">Промышленный сервис</a>. 
+2011. <a href="https://elibrary.ru/contents.asp?id=33730231&amp;selid=17394681">№&nbsp;1</a>.  С. 49-55.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17394681" title="Список публикаций, цитирующих данную">4</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394688">
+<td align="center" valign="top"><font color="#00008f"><b>77</b></font><br><input type="checkbox" name="tid17394688" id="tid17394688" onclick="if (this.checked) {RowSelect(a17394688,1)} else {RowSelect(a17394688,0)}"><div id="pdf_17394688" name="pdf_17394688" style=""></div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394688"><b><span style="line-height:1.0;">ВЫСОКОТОЧНАЯ ГРАВИРАЗВЕДКА ДЛЯ РЕШЕНИЯ ГЕОЛОГИЧЕСКИХ ЗАДАЧ</span></b></a><br><font color="#00008f"><i>Полын И.И.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730232">Промышленный сервис</a>. 
+2011. <a href="https://elibrary.ru/contents.asp?id=33730232&amp;selid=17394688">№&nbsp;2</a>.  С. 9-15.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17394792">
+<td align="center" valign="top"><font color="#00008f"><b>78</b></font><br><input type="checkbox" name="tid17394792" id="tid17394792" onclick="if (this.checked) {RowSelect(a17394792,1)} else {RowSelect(a17394792,0)}"><div id="pdf_17394792" name="pdf_17394792" style=""><img src="./elibrary_files/download_orange.png" width="16" vspace="3" border="0" title="Доступ к полному тексту закрыт">
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17394792"><b><span style="line-height:1.0;">ТРОЙНАЯ ВОДНАЯ СИСТЕМА НА ОСНОВЕ МОЧЕВИНЫ И АММИАЧНОЙ СЕЛИТРЫ И ИСПОЛЬЗОВАНИЕ ДАННОЙ СМЕСИ В КАЧЕСТВЕ АНТИГОЛОЛЕДНОГО СРЕДСТВА</span></b></a><br><font color="#00008f"><i>Копнина А.Ю., Милов С.Н., Гаркушин И.К., Кондратюк И.М.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730237">Журнал неорганической химии</a>. 
+2004. Т. 49. <a href="https://elibrary.ru/contents.asp?id=33730237&amp;selid=17394792">№&nbsp;12</a>.  С. 2101-2102.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17394792" title="Список публикаций, цитирующих данную">1</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395004">
+<td align="center" valign="top"><font color="#00008f"><b>79</b></font><br><input type="checkbox" name="tid17395004" id="tid17395004" onclick="if (this.checked) {RowSelect(a17395004,1)} else {RowSelect(a17395004,0)}"><div id="pdf_17395004" name="pdf_17395004" style=""><a href="javascript:load_article(17395004)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395004"><b><span style="line-height:1.0;">ОЦЕНКА ЗНАЧЕНИЙ ПОГРЕШНОСТЕЙ УСТАНОВОК ДЛЯ ИЗМЕРЕНИЯ ДЕБИТОВ СКВАЖИНЫ В УСЛОВИЯХ НЕФТЕПРОМЫСЛА</span></b></a><br><font color="#00008f"><i>Исаченко И.Н., Уваров Н.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730245">Автоматизация, телемеханизация и связь в нефтяной промышленности</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730245&amp;selid=17395004">№&nbsp;2</a>.  С. 3-12.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395005">
+<td align="center" valign="top"><font color="#00008f"><b>80</b></font><br><input type="checkbox" name="tid17395005" id="tid17395005" onclick="if (this.checked) {RowSelect(a17395005,1)} else {RowSelect(a17395005,0)}"><div id="pdf_17395005" name="pdf_17395005" style=""><a href="javascript:load_article(17395005)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395005"><b><span style="line-height:1.0;">ИНФОРМАЦИОННАЯ СИСТЕМА ОЦЕНКИ КАЧЕСТВА ПРОИЗВОДСТВЕННО-ТЕХНОЛОГИЧЕСКИХ ПРОЦЕССОВ НЕФТЕГАЗОВОЙ ОТРАСЛИ (НА ПРИМЕРЕ ДОБЫЧИ УГЛЕВОДОРОДОВ)</span></b></a><br><font color="#00008f"><i>Киташов Д.Ю.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730245">Автоматизация, телемеханизация и связь в нефтяной промышленности</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730245&amp;selid=17395005">№&nbsp;2</a>.  С. 12-17.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17395005" title="Список публикаций, цитирующих данную">2</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395008">
+<td align="center" valign="top"><font color="#00008f"><b>81</b></font><br><input type="checkbox" name="tid17395008" id="tid17395008" onclick="if (this.checked) {RowSelect(a17395008,1)} else {RowSelect(a17395008,0)}"><div id="pdf_17395008" name="pdf_17395008" style=""><a href="javascript:load_article(17395008)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395008"><b><span style="line-height:1.0;">МОДЕЛИРОВАНИЕ ВЫРАБОТКИ ЗАПАСОВ НЕФТИ ИЗ ПОСЛОЙНО НЕОДНОРОДНОГО ПО ПРОНИЦАЕМОСТИ ПЛАСТА КОНТАКТНОЙ ВИЗ С ПЕРЕХОДНОЙ ЗОНОЙ</span></b></a><br><font color="#00008f"><i>Владимиров И.В., Галин Э.Р., Лепихин В.А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730245">Автоматизация, телемеханизация и связь в нефтяной промышленности</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730245&amp;selid=17395008">№&nbsp;2</a>.  С. 25-38.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395010">
+<td align="center" valign="top"><font color="#00008f"><b>82</b></font><br><input type="checkbox" name="tid17395010" id="tid17395010" onclick="if (this.checked) {RowSelect(a17395010,1)} else {RowSelect(a17395010,0)}"><div id="pdf_17395010" name="pdf_17395010" style=""><a href="javascript:load_article(17395010)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395010"><b><span style="line-height:1.0;">ОЦЕНКА ИНЕРЦИОННЫХ ПОТЕРЬ ДАВЛЕНИЯ И ТУРБУЛЕНТНОСТИ ГАЗОВОГО ПОТОКА ПРИ ДВИЖЕНИИ ГАЗА К ЗАБОЮ СКВАЖИНЫ</span></b></a><br><font color="#00008f"><i>Васильев Ю.Н., Радкевич В.В., Свиридов А.В.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730245">Автоматизация, телемеханизация и связь в нефтяной промышленности</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730245&amp;selid=17395010">№&nbsp;2</a>.  С. 40-43.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17395010" title="Список публикаций, цитирующих данную">2</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395011">
+<td align="center" valign="top"><font color="#00008f"><b>83</b></font><br><input type="checkbox" name="tid17395011" id="tid17395011" onclick="if (this.checked) {RowSelect(a17395011,1)} else {RowSelect(a17395011,0)}"><div id="pdf_17395011" name="pdf_17395011" style=""><a href="javascript:load_article(17395011)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395011"><b><span style="line-height:1.0;">РАСШИРЕНИЕ ТЕХНОЛОГИЧЕСКИХ ВОЗМОЖНОСТЕЙ АВТОМАТИЗИРОВАННЫХ СИСТЕМ УПРАВЛЕНИЯ НЕПРЕРЫВНЫМ ГАЗЛИФТОМ</span></b></a><br><font color="#00008f"><i>Рамаэанова Э.Э., Юсифов С.И., Ахмедов Ч.М.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730245">Автоматизация, телемеханизация и связь в нефтяной промышленности</a>. 
+2012. <a href="https://elibrary.ru/contents.asp?id=33730245&amp;selid=17395011">№&nbsp;2</a>.  С. 43-47.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395171">
+<td align="center" valign="top"><font color="#00008f"><b>84</b></font><br><input type="checkbox" name="tid17395171" id="tid17395171" onclick="if (this.checked) {RowSelect(a17395171,1)} else {RowSelect(a17395171,0)}"><div id="pdf_17395171" name="pdf_17395171" style=""><a href="javascript:load_article(17395171)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395171"><b><span style="line-height:1.0;">ШЕЛЬФ - В ПОЛЕ ЗРЕНИЯ ГОСУДАРСТВА И ИНВЕСТОРОВ</span></b></a><br><font color="#00008f"><i>Прозоровский В.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730254">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730254&amp;selid=17395171">№&nbsp;9</a>.  С. 2-5.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395172">
+<td align="center" valign="top"><font color="#00008f"><b>85</b></font><br><input type="checkbox" name="tid17395172" id="tid17395172" onclick="if (this.checked) {RowSelect(a17395172,1)} else {RowSelect(a17395172,0)}"><div id="pdf_17395172" name="pdf_17395172" style=""><a href="javascript:load_article(17395172)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395172"><b><span style="line-height:1.0;">НОРВЕГИЯ - РОССИЯ. ГРАНИ СОТРУДНИЧЕСТВА</span></b></a><br><font color="#00008f"><i>Нордслеттен О.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730254">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730254&amp;selid=17395172">№&nbsp;9</a>.  С. 6-7.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395173">
+<td align="center" valign="top"><font color="#00008f"><b>86</b></font><br><input type="checkbox" name="tid17395173" id="tid17395173" onclick="if (this.checked) {RowSelect(a17395173,1)} else {RowSelect(a17395173,0)}"><div id="pdf_17395173" name="pdf_17395173" style=""><a href="javascript:load_article(17395173)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395173"><b><span style="line-height:1.0;">МЕТОДИЧЕСКИЕ РЕКОМЕНДАЦИИ ПО СОСТАВЛЕНИЮ ПРОГРАММЫ ГЕОЛОГО-ТЕХНОЛОГИЧЕСКИХ МЕРОПРИЯТИЙ</span></b></a><br><font color="#00008f"><i>Курамшин Р., Мулявин С., Юмачиков Р., Морозов О.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730254">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730254&amp;selid=17395173">№&nbsp;9</a>.  С. 8-11.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17395173" title="Список публикаций, цитирующих данную">6</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395174">
+<td align="center" valign="top"><font color="#00008f"><b>87</b></font><br><input type="checkbox" name="tid17395174" id="tid17395174" onclick="if (this.checked) {RowSelect(a17395174,1)} else {RowSelect(a17395174,0)}"><div id="pdf_17395174" name="pdf_17395174" style=""><a href="javascript:load_article(17395174)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395174"><b><span style="line-height:1.0;">ТЕМПЕРАТУРНЫЙ РЕЖИМ РАБОТЫ УЗЛОВ ТРЕНИЯ БУРОВОГО ДОЛОТА</span></b></a><br><font color="#00008f"><i>Закиров Н.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730254">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730254&amp;selid=17395174">№&nbsp;9</a>.  С. 12-14.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17395174" title="Список публикаций, цитирующих данную">7</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395175">
+<td align="center" valign="top"><font color="#00008f"><b>88</b></font><br><input type="checkbox" name="tid17395175" id="tid17395175" onclick="if (this.checked) {RowSelect(a17395175,1)} else {RowSelect(a17395175,0)}"><div id="pdf_17395175" name="pdf_17395175" style=""><a href="javascript:load_article(17395175)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395175"><b><span style="line-height:1.0;">ВОЗМОЖНОСТИ УМЕНЬШЕНИЯ ДИФФЕРЕНЦИАЛЬНОГО ДАВЛЕНИЯ В СКВАЖИНЕ БЕЗ СНИЖЕНИЯ ПЛОТНОСТИ БУРОВОГО РАСТВОРА</span></b></a><br><font color="#00008f"><i>Осипов П., Юдин В., Логачев Ю.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730254">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730254&amp;selid=17395175">№&nbsp;9</a>.  С. 16-18.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17395175" title="Список публикаций, цитирующих данную">1</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395176">
+<td align="center" valign="top"><font color="#00008f"><b>89</b></font><br><input type="checkbox" name="tid17395176" id="tid17395176" onclick="if (this.checked) {RowSelect(a17395176,1)} else {RowSelect(a17395176,0)}"><div id="pdf_17395176" name="pdf_17395176" style=""><a href="javascript:load_article(17395176)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395176"><b><span style="line-height:1.0;">ОАО "ВОЛГАБУРМАШ" - 10 ЛЕТ</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730254">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730254&amp;selid=17395176">№&nbsp;9</a>.  С. 19-23.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395177">
+<td align="center" valign="top"><font color="#00008f"><b>90</b></font><br><input type="checkbox" name="tid17395177" id="tid17395177" onclick="if (this.checked) {RowSelect(a17395177,1)} else {RowSelect(a17395177,0)}"><div id="pdf_17395177" name="pdf_17395177" style=""><a href="javascript:load_article(17395177)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395177"><b><span style="line-height:1.0;">ПРОБЛЕМА ОБЕСПЕЧЕНИЯ ПРОМЫШЛЕННОЙ И ЭКОЛОГИЧЕСКОЙ БЕЗОПАСНОСТИ ПРИ СТРОИТЕЛЬСТВЕ И ЭКСПЛУАТАЦИИ НЕФТЕГАЗОВЫХ СКВАЖИН</span></b></a><br><font color="#00008f"><i>Калмыков Г., Росляков А., Суслов П., Ревский В.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730254">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730254&amp;selid=17395177">№&nbsp;9</a>.  С. 24-27.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17395177" title="Список публикаций, цитирующих данную">3</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395179">
+<td align="center" valign="top"><font color="#00008f"><b>91</b></font><br><input type="checkbox" name="tid17395179" id="tid17395179" onclick="if (this.checked) {RowSelect(a17395179,1)} else {RowSelect(a17395179,0)}"><div id="pdf_17395179" name="pdf_17395179" style=""><a href="javascript:load_article(17395179)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395179"><b><span style="line-height:1.0;">ЗАО "ГОРОД". ЧЕЛОВЕЧЕСКАЯ СРЕДА ОБИТАНИЯ</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730254">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730254&amp;selid=17395179">№&nbsp;9</a>.  С. 30-32.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395180">
+<td align="center" valign="top"><font color="#00008f"><b>92</b></font><br><input type="checkbox" name="tid17395180" id="tid17395180" onclick="if (this.checked) {RowSelect(a17395180,1)} else {RowSelect(a17395180,0)}"><div id="pdf_17395180" name="pdf_17395180" style=""><a href="javascript:load_article(17395180)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395180"><b><span style="line-height:1.0;">УСТРОЙСТВО ДЛЯ РАЗМАГНИЧИВАНИЯ БУРОВОГО ИНСТРУМЕНТА</span></b></a><br><font color="#00008f"><i>Григашкин Г., Варламов С.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730254">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730254&amp;selid=17395180">№&nbsp;9</a>.  С. 34.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395181">
+<td align="center" valign="top"><font color="#00008f"><b>93</b></font><br><input type="checkbox" name="tid17395181" id="tid17395181" onclick="if (this.checked) {RowSelect(a17395181,1)} else {RowSelect(a17395181,0)}"><div id="pdf_17395181" name="pdf_17395181" style=""><a href="javascript:load_article(17395181)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395181"><b><span style="line-height:1.0;">СКВАЖИННЫЙ ФИЛЬТР ФЗСМ</span></b></a><br><font color="#00008f"><i>Григашкин Г., Варламов С.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730254">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730254&amp;selid=17395181">№&nbsp;9</a>.  С. 35.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395182">
+<td align="center" valign="top"><font color="#00008f"><b>94</b></font><br><input type="checkbox" name="tid17395182" id="tid17395182" onclick="if (this.checked) {RowSelect(a17395182,1)} else {RowSelect(a17395182,0)}"><div id="pdf_17395182" name="pdf_17395182" style=""><a href="javascript:load_article(17395182)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395182"><b><span style="line-height:1.0;">ОТ РЕСУРСОВ ДО ЗАПАСОВ - ДИСТАНЦИЯ ОГРОМНОГО РАЗМЕРА</span></b></a><br><font color="#00008f"><i>Гарипов В.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730254">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730254&amp;selid=17395182">№&nbsp;9</a>.  С. 36-38.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17395182" title="Список публикаций, цитирующих данную">2</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395183">
+<td align="center" valign="top"><font color="#00008f"><b>95</b></font><br><input type="checkbox" name="tid17395183" id="tid17395183" onclick="if (this.checked) {RowSelect(a17395183,1)} else {RowSelect(a17395183,0)}"><div id="pdf_17395183" name="pdf_17395183" style=""><a href="javascript:load_article(17395183)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395183"><b><span style="line-height:1.0;">ПРОБЛЕМЫ ЭКСПЛУАТАЦИИ И РЕМОНТА ГАЗОВЫХ СКВАЖИН НА ЗАВЕРШАЮЩЕЙ СТАДИИ РАЗРАБОТКИ МЕСТОРОЖДЕНИЙ</span></b></a><br><font color="#00008f"><i>Ахметов А., Гейхман М., Нифантов В., Харитонов А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730254">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730254&amp;selid=17395183">№&nbsp;9</a>.  С. 39-41.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395186">
+<td align="center" valign="top"><font color="#00008f"><b>96</b></font><br><input type="checkbox" name="tid17395186" id="tid17395186" onclick="if (this.checked) {RowSelect(a17395186,1)} else {RowSelect(a17395186,0)}"><div id="pdf_17395186" name="pdf_17395186" style=""><a href="javascript:load_article(17395186)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395186"><b><span style="line-height:1.0;">ИНТЕРФАКС</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730254">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730254&amp;selid=17395186">№&nbsp;9</a>.  С. 47-49.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395187">
+<td align="center" valign="top"><font color="#00008f"><b>97</b></font><br><input type="checkbox" name="tid17395187" id="tid17395187" onclick="if (this.checked) {RowSelect(a17395187,1)} else {RowSelect(a17395187,0)}"><div id="pdf_17395187" name="pdf_17395187" style=""><a href="javascript:load_article(17395187)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395187"><b><span style="line-height:1.0;">СТАТИСТИКА</span></b></a><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730254">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730254&amp;selid=17395187">№&nbsp;9</a>.  С. 50-55.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle">0</td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395189">
+<td align="center" valign="top"><font color="#00008f"><b>98</b></font><br><input type="checkbox" name="tid17395189" id="tid17395189" onclick="if (this.checked) {RowSelect(a17395189,1)} else {RowSelect(a17395189,0)}"><div id="pdf_17395189" name="pdf_17395189" style=""><a href="javascript:load_article(17395189)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395189"><b><span style="line-height:1.0;">ГЕОНАВИГАЦИЯ ПРИ ВОССТАНОВЛЕНИИ СКВАЖИН БОКОВЫМИ ГОРИЗОНТАЛЬНЫМИ СТВОЛАМИ</span></b></a><br><font color="#00008f"><i>Кульчицкий В., Леонтьев И., Гиря В., Батюков С., Григашкин Г.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730255">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730255&amp;selid=17395189">№&nbsp;1</a>.  С. 4-6.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17395189" title="Список публикаций, цитирующих данную">3</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395190">
+<td align="center" valign="top"><font color="#00008f"><b>99</b></font><br><input type="checkbox" name="tid17395190" id="tid17395190" onclick="if (this.checked) {RowSelect(a17395190,1)} else {RowSelect(a17395190,0)}"><div id="pdf_17395190" name="pdf_17395190" style=""><a href="javascript:load_article(17395190)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395190"><b><span style="line-height:1.0;">СЛУЖБА МОНИТОРИНГА ЗА ПРОЦЕССОМ СТРОИТЕЛЬСТВА СКВАЖИН</span></b></a><br><font color="#00008f"><i>Балдин А., Долгих П.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730255">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730255&amp;selid=17395190">№&nbsp;1</a>.  С. 7-9.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17395190" title="Список публикаций, цитирующих данную">2</a></td></tr>
+
+
+<tr valign="middle" bgcolor="#f5f5f5" id="a17395191">
+<td align="center" valign="top"><font color="#00008f"><b>100</b></font><br><input type="checkbox" name="tid17395191" id="tid17395191" onclick="if (this.checked) {RowSelect(a17395191,1)} else {RowSelect(a17395191,0)}"><div id="pdf_17395191" name="pdf_17395191" style=""><a href="javascript:load_article(17395191)"><img src="./elibrary_files/download_green.png" width="16" vspace="3" border="0" title="Доступ к полному тексту открыт"></a>
+
+</div></td>
+<td align="left" valign="top">
+<span style="overflow-wrap: break-word;">
+
+<a href="https://elibrary.ru/item.asp?id=17395191"><b><span style="line-height:1.0;">О ВОЗМОЖНОСТИ ПРОВЕДЕНИЯ НАКЛОННЫХ И ГОРИЗОНТАЛЬНЫХ СКВАЖИН С ПОМОЩЬЮ УСТРОЙСТВА С ВИНТОВОЙ ПАРОЙ</span></b></a><br><font color="#00008f"><i>Курочкин Б., Кагарманов И., Ахметшин Р., Вакула А.</i></font><br>
+<font color="#00008f">
+
+
+<a href="https://elibrary.ru/contents.asp?id=33730255">Бурение и нефть</a>. 
+2004. <a href="https://elibrary.ru/contents.asp?id=33730255&amp;selid=17395191">№&nbsp;1</a>.  С. 10-12.
+</font></span><font color="#00008f">
+
+</font></td><td align="center" valign="middle"><a href="https://elibrary.ru/cit_items.asp?id=17395191" title="Список публикаций, цитирующих данную">1</a></td></tr>
+
+
+</tbody></table>
+
+
+<table width="580" cellspacing="1" cellpadding="3" border="0" bgcolor="#ffffff">
+<tbody><tr align="center" valign="middle" class="menus">
+<td width="15%" bgcolor="#555555" nowrap=""><a href="https://elibrary.ru/query_results.asp?pagenum=1">В&nbsp;начало</a></td>
+<td width="10%" bgcolor="#555555" nowrap=""><font color="#aaaaaa">&lt;&lt;</font></td>
+
+<td width="5%" bgcolor="#5c6aa6" nowrap=""><font color="#ffffff">1</font></td>
+
+<td width="5%" bgcolor="#555555" nowrap=""><a href="https://elibrary.ru/query_results.asp?pagenum=2">2</a></td>
+
+<td width="5%" bgcolor="#555555" nowrap=""><a href="https://elibrary.ru/query_results.asp?pagenum=3">3</a></td>
+
+<td width="5%" bgcolor="#555555" nowrap=""><a href="https://elibrary.ru/query_results.asp?pagenum=4">4</a></td>
+
+<td width="5%" bgcolor="#555555" nowrap=""><a href="https://elibrary.ru/query_results.asp?pagenum=5">5</a></td>
+
+<td width="5%" bgcolor="#555555" nowrap=""><a href="https://elibrary.ru/query_results.asp?pagenum=6">6</a></td>
+
+<td width="5%" bgcolor="#555555" nowrap=""><a href="https://elibrary.ru/query_results.asp?pagenum=7">7</a></td>
+
+<td width="5%" bgcolor="#555555" nowrap=""><a href="https://elibrary.ru/query_results.asp?pagenum=8">8</a></td>
+
+<td width="5%" bgcolor="#555555" nowrap=""><a href="https://elibrary.ru/query_results.asp?pagenum=9">9</a></td>
+
+<td width="5%" bgcolor="#555555" nowrap=""><a href="https://elibrary.ru/query_results.asp?pagenum=10">10</a></td>
+
+<td width="10%" bgcolor="#555555" nowrap=""><a href="https://elibrary.ru/query_results.asp?pagenum=2">&gt;&gt;</a></td>
+<td width="15%" bgcolor="#555555" nowrap=""><a href="https://elibrary.ru/query_results.asp?pagenum=2290">В&nbsp;конец</a></td>
+</tr></tbody></table>
+
+</td></tr></tbody></table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="200" align="right" valign="top">
+
+<img src="./elibrary_files/1pix.gif" vspace="14"><br>
+<table width="200" cellspacing="0" cellpadding="3" border="0" bgcolor="#eeeeee">
+<tbody><tr><td colspan="2" bgcolor="#555555" valign="middle" align="center">
+<font color="#ffffff">Возможные действия</font>
+</td></tr>
+
+<tr><td colspan="2"><img src="./elibrary_files/1pix.gif" vspace="5"><br></td></tr>
+
+
+<tr><td width="15%" align="right" valign="top">
+<a href="https://elibrary.ru/query_results.asp?pagenum=2"><img src="./elibrary_files/but_orange.gif" width="15" height="15" hspace="3" border="0"></a></td>
+<td width="85%" align="left" valign="middle"><a href="https://elibrary.ru/query_results.asp?pagenum=2">Следующая страница</a>
+</td></tr>
+<tr><td colspan="2"><img src="./elibrary_files/1pix.gif" vspace="5"><br></td></tr>
+<tr><td width="15%" align="right" valign="top">
+<a href="javascript:select_all()"><img src="./elibrary_files/but_orange.gif" width="15" height="15" hspace="3" border="0"></a></td>
+<td width="85%" align="left" valign="middle"><a href="javascript:select_all()">Выделить все публикации на этой странице</a>
+</td></tr>
+<tr><td width="15%" align="right" valign="top">
+<a href="javascript:deselect_all()"><img src="./elibrary_files/but_orange.gif" width="15" height="15" hspace="3" border="0"></a></td>
+<td width="85%" align="left" valign="middle"><a href="javascript:deselect_all()">Снять выделение</a>
+</td></tr>
+
+<tr><td colspan="2"><img src="./elibrary_files/1pix.gif" vspace="5"><br></td></tr>
+<tr><td width="15%" align="right" valign="top">
+<a href="javascript:itembox_add()"><img src="./elibrary_files/but_orange.gif" width="15" height="15" hspace="3" border="0"></a></td>
+<td width="85%" align="left" valign="middle"><a href="javascript:itembox_add()">Добавить выделенные статьи в подборку:</a></td></tr>
+
+<tr><td colspan="2" align="center"><select name="itemboxid" style="width:190px" class="input">
+
+<option value="0" selected="">Новая подборка
+</option></select>&nbsp;</td></tr>
+
+<tr><td width="15%" align="right" valign="top">
+<a href="javascript:itembox_add_all()"><img src="./elibrary_files/but_orange.gif" width="15" height="15" hspace="3" border="0"></a></td>
+<td width="85%" align="left" valign="middle"><a href="javascript:itembox_add_all()">Добавить все страницы с результатами поиска в указанную выше подборку</a></td></tr>
+
+<tr><td colspan="2"><img src="./elibrary_files/1pix.gif" vspace="5"><br></td></tr>
+<tr><td width="15%" align="right" valign="top">
+<a href="https://elibrary.ru/querybox.asp?scope=current"><img src="./elibrary_files/but_orange.gif" width="15" height="15" hspace="3" border="0"></a></td>
+<td width="85%" align="left" valign="middle"><a href="https://elibrary.ru/querybox.asp?scope=current">Вернуться к поисковой форме и изменить условия запроса</a></td></tr>
+
+<tr><td width="15%" align="right" valign="top">
+<a href="https://elibrary.ru/querybox.asp?scope=newquery"><img src="./elibrary_files/but_orange.gif" width="15" height="15" hspace="3" border="0"></a></td>
+<td width="85%" align="left" valign="middle"><a href="https://elibrary.ru/querybox.asp?scope=newquery">Создать новый поисковый запрос</a></td></tr>
+
+<tr><td width="15%" align="right" valign="top">
+<a href="https://elibrary.ru/querybox.asp?scope=infound"><img src="./elibrary_files/but_orange.gif" width="15" height="15" hspace="3" border="0"></a></td>
+<td width="85%" align="left" valign="middle"><a href="https://elibrary.ru/querybox.asp?scope=infound">Продолжить поиск среди найденных результатов</a></td></tr>
+
+
+
+
+<tr><td colspan="2"><img src="./elibrary_files/1pix.gif" vspace="8"><br></td></tr>
+</tbody></table><br><br>
+
+
+
+<img src="./elibrary_files/1pix.gif" vspace="9"><br>
+
+
+</td></tr></tbody></table>
+</td></tr></tbody></table>
+
+<br><br>
+</div>
+
+</body></html>
