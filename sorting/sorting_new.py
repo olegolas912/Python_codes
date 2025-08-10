@@ -11,7 +11,7 @@ import pandas as pd, openpyxl
 CFG = {
     "raport":  Path("raport восточный уренгой.xlsx"),
     "shakmat": Path("шахмат.xlsx"),
-    "out":     Path("output_final.xlsx"),
+    "out":     Path("output_final1.xlsx"),
     # фильтры по блокам «Месторождение / Лицензионный участок»
     "target_field": "уренгойское",
     "target_lic":   "восточно-уренгойское",

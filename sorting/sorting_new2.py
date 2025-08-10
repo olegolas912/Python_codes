@@ -23,7 +23,7 @@ CFG = {
     # файлы
     "raport":  Path("raport восточный уренгой.xlsx"),
     "shakmat": Path("шахмат.xlsx"),
-    "out":     Path("output_final5.xlsx"),
+    "out":     Path("output_final2.xlsx"),
 
     # фильтры
     "target_field": "уренгойское",
